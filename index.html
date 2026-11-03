@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="عرض ELEVATE لفندق أوبال عمّان: منظومة OPAL ONE للحجز والأفراح والسبا والمطاعم وإدارة الفندق.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OPAL ONE · عرض منظومة فندق أوبال">
+<meta property="og:description" content="مقدَّم من ELEVATE لإدارة فندق أوبال عمّان">
+<meta property="og:image" content="https://rayanobidi00-png.github.io/opal-elevate/img/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://rayanobidi00-png.github.io/opal-elevate/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1D1E20">
+<link rel="icon" href="img/opal-logo.png">
+<title>Opal One — عرض منظومة فندق أوبال</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Gelasio:ital,wght@0,500;0,700;1,500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Opal brand, taken from opalhoteljo.com; ELEVATE colours appear only in its own logo */
+  --gold:#BB8B41;
+  --gold-soft:#D9B77A;
+  --char:#1D1E20;
+  --olive:#485342;
+  --ivory:#F6F1E8;
+  --ink:#1A1A1A;
+  --mute:#727586;
+  --line:rgba(187,139,65,.28);
+  --f-display:"Amiri","Gelasio",Georgia,serif;
+  --f-brand:"Gelasio",Georgia,serif;
+  --f-body:"IBM Plex Sans Arabic","DM Sans",system-ui,sans-serif;
+  --f-latin:"DM Sans",system-ui,sans-serif;
+  /* layout: film-backed cover, then alternating night/marble bands; three 3D moments: photo ring, digital twin, hall planner */
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;overflow-x:hidden}
+@supports (overflow:clip){html,body{overflow-x:clip}}
+button,a,.ring-wrap,canvas{touch-action:manipulation}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{background:var(--ivory);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+img,video,canvas{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;text-wrap:balance;margin:0;line-height:1.25}
+p{margin:0}
+.wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+.latin{font-family:var(--f-latin);direction:ltr;unicode-bidi:isolate}
+.brand{font-family:var(--f-brand);letter-spacing:.08em;direction:ltr;unicode-bidi:isolate}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.12em;color:var(--gold);font-weight:600}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+section{padding:100px 0}
+.dark{background:var(--char);color:#EDE7DC}
+.dark .mute{color:#A9A6A0}
+.mute{color:var(--mute)}
+.sec-head{display:grid;gap:14px;max-width:780px;margin-bottom:50px}
+.sec-head h2{font-size:clamp(32px,4.4vw,54px)}
+.sec-head p{font-size:18px}
+.gold{color:var(--gold)}
+.tnum{font-variant-numeric:tabular-nums}
+.ph{background:#2a2a2a center/cover no-repeat}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px}
+
+/* ---------- top bar ---------- */
+.topbar{position:absolute;inset:0 0 auto 0;z-index:6;padding:20px 0}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.pair{display:flex;align-items:center;gap:14px;direction:ltr}
+.pair img{height:42px;width:auto}
+.pair .x{color:var(--gold-soft);font:400 20px var(--f-latin);opacity:.7}
+.pair .nm{font:700 15px var(--f-latin);letter-spacing:.22em;color:#fff}
+.pair .op{font:700 19px var(--f-brand);letter-spacing:.08em;color:var(--gold-soft)}
+.tag{border:1px solid rgba(217,183,122,.6);color:var(--gold-soft);border-radius:999px;padding:6px 16px;font-size:13px;letter-spacing:.06em;background:rgba(20,21,23,.35);backdrop-filter:blur(6px)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;color:#F4EEE3;overflow:hidden;background:#111}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(270deg,rgba(17,17,18,.92) 0%,rgba(17,17,18,.7) 42%,rgba(17,17,18,.15) 100%),linear-gradient(0deg,rgba(17,17,18,.9),transparent 40%)}
+.hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end;padding:150px 0 70px;min-height:680px}
+.hero-copy{display:grid;gap:22px;align-content:end}
+.hero h1{font-size:clamp(42px,6vw,82px);line-height:1.12}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .lead{font-size:19px;color:#D7D0C3;max-width:560px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;font-size:14px;color:#C2BBAE;border-top:1px solid var(--line);padding-top:18px}
+.hero-meta b{color:var(--gold-soft);font-weight:500}
+.cover-card{justify-self:start;align-self:end;background:rgba(20,21,23,.55);border:1px solid rgba(217,183,122,.35);backdrop-filter:blur(10px);padding:22px 24px;border-radius:6px;display:grid;gap:12px;max-width:340px}
+.cover-card .row2{display:flex;align-items:center;gap:12px}
+.cover-card img{height:46px;width:auto}
+.cover-card small{color:#B9B2A5;font-size:12.5px;letter-spacing:.06em}
+.cover-card b{font:700 18px var(--f-latin);letter-spacing:.2em}
+.cover-card p{font-size:14px;color:#CFC8BB}
+.play{display:inline-flex;align-items:center;gap:10px;color:var(--gold-soft);font-size:14px;text-decoration:none;border:1px solid rgba(217,183,122,.5);border-radius:999px;padding:7px 16px 7px 12px;justify-self:start}
+.play i{width:0;height:0;border-block:6px solid transparent;border-inline-end:10px solid var(--gold-soft)}
+
+/* ---------- facts ---------- */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fact{padding:28px 22px;border-inline-start:1px solid var(--line);display:grid;gap:4px}
+.fact:first-child{border-inline-start:0}
+.fact .n{font-family:var(--f-brand);font-size:46px;color:var(--gold);line-height:1.1}
+.fact .l{font-size:14.5px;color:#4b4b4b}
+
+/* ---------- 3D photo ring ---------- */
+.ring-wrap{position:relative;height:440px;margin:60px 0 10px;perspective:1600px;cursor:grab;touch-action:pan-y;user-select:none;overflow:hidden;-webkit-user-select:none}
+.ring-wrap:active{cursor:grabbing}
+.ring{position:absolute;inset:0;margin:auto;width:230px;height:310px;transform-style:preserve-3d}
+.ring figure{position:absolute;inset:0;margin:0;border-radius:6px;overflow:hidden;background:#222 center/cover;box-shadow:0 30px 50px -25px rgba(0,0,0,.6);border:1px solid rgba(187,139,65,.45);backface-visibility:hidden}
+.ring figcaption{position:absolute;inset:auto 0 0 0;padding:30px 14px 12px;background:linear-gradient(transparent,rgba(17,17,18,.85));color:#F4EEE3;font:700 17px var(--f-display)}
+.ring-floor{position:absolute;inset:auto 10% 0 10%;height:60px;background:radial-gradient(50% 50% at 50% 50%,rgba(187,139,65,.25),transparent);filter:blur(6px)}
+.hint{text-align:center;font-size:12.5px;color:var(--mute);letter-spacing:.06em}
+
+/* ---------- bento ---------- */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px;margin-top:56px}
+.tile{position:relative;border-radius:6px;overflow:hidden;color:#fff;display:grid;align-content:end;padding:20px;transform-style:preserve-3d;transition:transform .25s ease}
+.tile::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(17,17,18,.88));z-index:0}
+.tile>*{position:relative;z-index:1}
+.tile h3{font-size:26px}
+.tile p{font-size:14px;color:#E2DACB;max-width:420px}
+.tile .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tile .chip{font-size:12px;border:1px solid rgba(217,183,122,.6);color:#F1E2C4;border-radius:999px;padding:1px 10px;background:rgba(0,0,0,.25)}
+.t-a{grid-column:span 2;grid-row:span 2}
+.t-b{grid-column:span 2}
+.t-c{grid-row:span 2}
+
+/* ---------- halls ---------- */
+.halls4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;perspective:1200px}
+.door{position:relative;aspect-ratio:3/4.4;border-radius:6px;overflow:hidden;transform-style:preserve-3d;transition:transform .25s ease;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.door::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(17,17,18,.9))}
+.door span{position:absolute;inset:auto 16px 16px 16px;z-index:1;display:grid;gap:2px}
+.door b{font:700 21px var(--f-brand);letter-spacing:.08em;color:var(--gold-soft);direction:ltr;text-align:right}
+.door small{color:#D7D0C3;font-size:13px}
+
+/* ---------- problems ---------- */
+.gaps{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line)}
+.gap{padding:30px 30px 32px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:52px 1fr;gap:18px}
+.gap:nth-child(odd){border-inline-end:1px solid var(--line)}
+.gap:nth-last-child(-n+2){border-bottom:0}
+.gap .k{font-family:var(--f-brand);color:var(--gold);font-size:30px;line-height:1}
+.gap h3{font-size:22px;margin-bottom:6px;color:#F3EBDD}
+.gap .now{font-size:13px;color:var(--gold-soft);margin-top:10px;display:block}
+
+/* ---------- digital twin ---------- */
+.twin{background:radial-gradient(110% 90% at 50% 100%,#3a3226 0%,#1D1E20 55%,#141517 100%);color:#EFE8DC}
+.twin-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:center}
+.stage{position:relative;height:600px;overflow:hidden}
+#scene{position:absolute;inset:0;width:100%;height:100%;cursor:grab;touch-action:pan-y}
+#hall3d{touch-action:pan-y}
+#scene:active{cursor:grabbing}
+.hotspot{position:absolute;transform:translate(-50%,-100%);pointer-events:none;white-space:nowrap;transition:opacity .3s}
+.hotspot span{display:inline-flex;align-items:center;gap:8px;background:rgba(20,21,23,.8);border:1px solid var(--gold);color:#F1E6D2;font-size:12.5px;padding:5px 12px;border-radius:999px}
+.hotspot span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(187,139,65,.25)}
+.hotspot::after{content:"";display:block;width:1px;height:26px;margin:0 auto;background:linear-gradient(var(--gold),transparent)}
+.modes{display:flex;flex-wrap:wrap;gap:8px}
+.mode{appearance:none;border:1px solid var(--line);background:transparent;color:#D9D1C3;font:500 14px var(--f-body);padding:9px 18px;border-radius:999px;cursor:pointer}
+.mode[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#1D1E20}
+.twin-legend{display:none;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:#CBC4B7}
+.twin-legend.on{display:flex}
+.twin-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-inline-end:6px;vertical-align:-1px}
+.twin-copy{display:grid;gap:18px}
+.twin-copy h2{font-size:clamp(32px,4vw,50px)}
+.twin-copy ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.twin-copy li{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:15.5px;color:#CBC4B7}
+.twin-copy li::before{content:"◆";color:var(--gold);font-size:10px;padding-top:6px}
+.fallback{position:absolute;inset:0;display:none;place-items:center;color:var(--gold-soft);font-family:var(--f-brand)}
+
+/* ---------- modules ---------- */
+.mods{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.mod{background:#fff;border:1px solid #E6DCCB;border-radius:6px;overflow:hidden;display:grid;grid-template-rows:120px auto;position:relative;transition:transform .25s ease,box-shadow .25s}
+.mod:hover{transform:translateY(-4px);box-shadow:0 24px 40px -28px rgba(0,0,0,.45)}
+.mod .ph{position:relative}
+.mod .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(17,17,18,.55))}
+.mod .ic{position:absolute;z-index:1;inset:auto 18px -20px auto;width:42px;height:42px;border-radius:50%;background:var(--char);border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold)}
+.mod .body{padding:28px 20px 22px;display:grid;gap:8px;align-content:start}
+.mod h3{font-size:21px}
+.mod p{font-size:15px;color:#555}
+.mod ul{margin:2px 0 0;padding:0;list-style:none;display:grid;gap:4px;font-size:14px;color:#3d3d3d}
+.mod li::before{content:"◆";color:var(--gold);font-size:9px;margin-inline-end:8px;vertical-align:2px}
+
+/* ---------- showcase ---------- */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.tab{appearance:none;border:1px solid var(--line);background:transparent;color:#D9D1C3;font:500 15px var(--f-body);padding:10px 20px;border-radius:999px;cursor:pointer;transition:.2s}
+.tab:hover{border-color:var(--gold);color:#fff}
+.tab[aria-selected="true"]{background:var(--gold);border-color:var(--gold);color:#1D1E20}
+.panel{display:none}
+.panel.on{display:grid;grid-template-columns:1.55fr 1fr;gap:26px;align-items:start}
+.panel-note{display:grid;gap:14px;align-content:start}
+.panel-note h3{font-size:30px;color:#F3EBDD}
+.panel-note ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.panel-note li{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:15.5px;color:#CBC4B7}
+.panel-note li::before{content:"✓";color:var(--gold)}
+.sample{font-size:12px;color:#8E887E;border:1px dashed #55524c;border-radius:4px;padding:6px 10px;justify-self:start}
+
+.browser{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.7),0 0 0 1px rgba(187,139,65,.35);color:var(--ink)}
+.bbar{height:34px;background:#EFEAE1;display:flex;align-items:center;gap:6px;padding:0 12px;direction:ltr}
+.bbar i{width:10px;height:10px;border-radius:50%;background:#d7cfc2}
+.bbar .url{flex:1;margin-left:10px;height:20px;border-radius:5px;background:#fff;font:12px var(--f-latin);color:#888;display:flex;align-items:center;padding:0 10px}
+.site-h{display:flex;align-items:center;justify-content:space-between;padding:12px 22px;border-bottom:1px solid #eee;gap:12px}
+.site-logo{display:flex;align-items:center;gap:8px;direction:ltr;font:700 17px var(--f-brand);letter-spacing:.06em;color:var(--gold)}
+.site-logo img{height:26px;width:auto}
+.site-h nav{display:flex;gap:16px;font-size:13px;color:#8a6a35}
+.btn{appearance:none;border:1px solid var(--gold);background:var(--gold);color:#fff;font:600 14px var(--f-body);padding:9px 18px;border-radius:999px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--gold)}
+.site-hero{position:relative;height:210px;display:grid;place-items:center;color:#fff;overflow:hidden}
+.site-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(17,17,18,.15),rgba(17,17,18,.6))}
+.site-hero h4{position:relative;font:700 30px var(--f-display);margin:0;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.bookbar{margin:-30px 22px 0;position:relative;background:#fff;border-radius:8px;box-shadow:0 14px 30px -12px rgba(0,0,0,.35);display:grid;grid-template-columns:repeat(3,1fr) auto;overflow:hidden;border:1px solid #eee}
+.bookbar label{display:grid;min-width:0;padding:10px 14px;border-inline-start:1px solid #eee;font-size:11.5px;color:#999}
+.bookbar label:first-child{border-inline-start:0}
+.bookbar input,.bookbar select{min-width:0;max-width:100%;border:0;font:500 14px var(--f-body);color:var(--ink);background:transparent;padding:0;width:100%}
+.bookbar .btn{border-radius:0;padding:0 22px}
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:22px}
+.room{border:1px solid #eee;border-radius:6px;overflow:hidden;display:grid;font-size:13px}
+.room .ph{height:96px}
+.room .rb{padding:10px 12px;display:grid;gap:2px}
+.room b{font:700 15px var(--f-brand)}
+.room .pr{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.room .pr strong{color:var(--gold);font:700 16px var(--f-brand)}
+.room.sel{outline:2px solid var(--gold)}
+
+.phone{width:262px;justify-self:center;background:#111;border-radius:36px;padding:10px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(187,139,65,.4)}
+.phone .scr{background:var(--ivory);border-radius:28px;overflow:hidden;min-height:520px;color:var(--ink);display:grid;align-content:start}
+.notch{height:22px;display:grid;place-items:center}
+.notch i{width:80px;height:6px;border-radius:9px;background:#222}
+.row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #f1f1f1;gap:8px}
+.row:last-child{border-bottom:0}
+
+.planner{padding:18px 22px;display:grid;gap:14px}
+.halls{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.hall{appearance:none;border:2px solid transparent;border-radius:6px;padding:0;cursor:pointer;overflow:hidden;position:relative;height:64px;background:#222 center/cover}
+.hall::after{content:"";position:absolute;inset:0;background:rgba(17,17,18,.45)}
+.hall span{position:relative;z-index:1;font:700 12.5px var(--f-brand);color:#F3E5C8;letter-spacing:.06em}
+.hall[aria-pressed="true"]{border-color:var(--gold)}
+.hall[aria-pressed="true"]::after{background:rgba(17,17,18,.15)}
+#hall3d{width:100%;height:230px;border-radius:6px;background:#141517;cursor:grab}
+.pl-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
+.cal{border:1px solid #eee;border-radius:6px;padding:10px}
+.cal-h{display:flex;justify-content:space-between;align-items:center;font:700 15px var(--f-display);margin-bottom:6px}
+.cal-h button{appearance:none;border:0;background:none;color:var(--gold);font-size:18px;cursor:pointer;padding:0 6px}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;font-size:11.5px;text-align:center}
+.days .dn{color:#aaa;font-size:10.5px}
+.d{appearance:none;border:0;border-radius:4px;padding:5px 0;background:#f3efe7;font:500 12px var(--f-latin);cursor:pointer;color:#333}
+.d.busy{background:#e9e2d6;color:#b5aa98;text-decoration:line-through;cursor:not-allowed}
+.d.hold{background:#f3e3c3;color:#7a5a26}
+.d.pick{background:var(--gold);color:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:11px;color:#888;margin-top:8px}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-inline-end:4px;vertical-align:-1px}
+.ctrl{display:grid;gap:10px;font-size:13px;align-content:start}
+.ctrl label{display:grid;gap:4px;color:#555}
+.ctrl input[type=range]{accent-color:var(--gold);width:100%}
+.ctrl select{font:500 13px var(--f-body);padding:6px 8px;border:1px solid #ddd;border-radius:5px;background:#fff}
+.xtras{display:flex;flex-wrap:wrap;gap:6px}
+.xtras label{display:inline-flex;gap:6px;align-items:center;border:1px solid #e6dccb;border-radius:999px;padding:3px 10px;font-size:12px;cursor:pointer;background:#fff}
+.xtras input{accent-color:var(--gold)}
+.est{background:var(--char);color:#EFE8DC;border-radius:6px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.est .v{font:700 26px var(--f-brand);color:var(--gold-soft)}
+.est small{display:block;color:#a9a39a;font-size:11.5px}
+
+.spa{padding:18px 22px;display:grid;gap:14px}
+.seg{display:inline-flex;border:1px solid #e3d6bd;border-radius:999px;overflow:hidden;justify-self:start}
+.seg button{appearance:none;border:0;background:#fff;padding:6px 16px;font:500 13px var(--f-body);cursor:pointer;color:#6e5228}
+.seg button[aria-pressed="true"]{background:var(--olive);color:#fff}
+.svc{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.svc button{appearance:none;text-align:start;border:1px solid #eee;background:#fff;border-radius:6px;padding:0;cursor:pointer;font:13px var(--f-body);display:grid;grid-template-columns:74px 1fr;overflow:hidden}
+.svc button .ph{min-height:64px}
+.svc button span{display:grid;gap:2px;padding:9px 12px}
+.svc button b{font:700 15px var(--f-display);color:var(--ink)}
+.svc button[aria-pressed="true"]{border-color:var(--olive);box-shadow:inset 0 0 0 1px var(--olive);background:#f4f6f1}
+.slots{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.slot{appearance:none;border:1px solid #e6e6e6;background:#fff;border-radius:5px;padding:6px 0;font:500 12.5px var(--f-latin);cursor:pointer}
+.slot[disabled]{color:#c8c8c8;background:#f6f6f6;cursor:not-allowed}
+.slot[aria-pressed="true"]{background:var(--olive);border-color:var(--olive);color:#fff}
+
+.res{padding:18px 22px;display:grid;gap:14px}
+.areas{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.area{appearance:none;border:2px solid transparent;border-radius:6px;padding:0;font:12.5px var(--f-body);display:grid;cursor:pointer;overflow:hidden;background:#fff;text-align:start;box-shadow:0 0 0 1px #eee}
+.area .ph{height:80px}
+.area span{padding:8px 10px;display:grid}
+.area b{font:700 15px var(--f-display)}
+.area.on{border-color:var(--gold)}
+.tables{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;padding:12px;background:#f7f3ec;border-radius:6px}
+.tb{appearance:none;width:42px;justify-self:center;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font:600 11px var(--f-latin);background:#fff;border:1px solid #ddd;cursor:pointer}
+.tb.t{background:#e6dfd2;color:#aaa;cursor:not-allowed}
+.tb.r{background:var(--gold);color:#fff;border-color:var(--gold)}
+.mi{display:grid;grid-template-columns:52px 1fr auto;gap:2px 10px;padding:9px 12px;border-bottom:1px solid #eee;font-size:12px;align-items:center}
+.mi .ph{width:52px;height:52px;border-radius:8px;grid-row:span 2}
+.mi b{font:700 14.5px var(--f-display)}
+.mi .p{font:700 13px var(--f-brand);color:var(--gold)}
+.mi button{grid-row:span 2;appearance:none;border:1px solid var(--gold);background:#fff;color:var(--gold);border-radius:999px;width:28px;height:28px;cursor:pointer;font-size:16px}
+.cart{margin:12px 14px;background:var(--char);color:#fff;border-radius:999px;padding:10px 16px;display:flex;justify-content:space-between;font-size:13px}
+
+.admin{display:grid;grid-template-columns:150px 1fr;min-height:430px;font-size:13px}
+.side{background:var(--char);color:#bdb6aa;padding:16px 12px;display:grid;align-content:start;gap:4px}
+.side .site-logo{margin-bottom:12px;color:var(--gold-soft)}
+.side a{display:block;padding:7px 10px;border-radius:5px;text-decoration:none}
+.side a.on{background:rgba(187,139,65,.18);color:var(--gold-soft)}
+.main{padding:18px;display:grid;gap:14px;align-content:start;background:#FAF8F4}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.kpi{background:#fff;border:1px solid #eee;border-radius:6px;padding:10px 12px;display:grid;gap:2px}
+.kpi .v{font:700 22px var(--f-brand)}
+.kpi .s{font-size:11px;color:#3f7a46}
+.kpi .s.dn{color:#a4483b}
+.two{display:grid;grid-template-columns:1.4fr 1fr;gap:12px}
+.card{background:#fff;border:1px solid #eee;border-radius:6px;padding:12px}
+.card h5{margin:0 0 8px;font:700 14px var(--f-display)}
+.pill{font-size:11px;border-radius:999px;padding:1px 8px;white-space:nowrap}
+.p-ok{background:#e7f1e6;color:#2f6a37}
+.p-w{background:#fbf0d9;color:#8a6417}
+.p-x{background:#f6e1dd;color:#9b3c2f}
+.p-g{background:#eee;color:#666}
+
+/* ---------- film ---------- */
+.film-grid{display:grid;grid-template-columns:1fr 280px;gap:30px;align-items:center}
+.film{position:relative;border-radius:8px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.6),0 0 0 1px rgba(187,139,65,.4);background:#000}
+.film video{width:100%;aspect-ratio:16/9;object-fit:cover}
+.reel{display:grid;gap:12px;justify-items:center;text-align:center}
+.reel .phone .scr{min-height:0;padding:0;background:#000}
+.reel video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:28px}
+.reel p{font-size:14px;color:#555}
+
+/* ---------- journey ---------- */
+.journey{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.step{display:grid;gap:10px;align-content:start}
+.step .ph{aspect-ratio:4/5;border-radius:6px;position:relative}
+.step .ph b{position:absolute;inset:10px auto auto 10px;width:36px;height:36px;border-radius:50%;background:var(--char);color:var(--gold-soft);display:grid;place-items:center;font:700 16px var(--f-brand);border:1px solid var(--gold)}
+.step h3{font-size:21px}
+.step p{font-size:14px;color:#555}
+
+/* ---------- roadmap ---------- */
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.phase{border-top:2px solid var(--gold);padding-top:18px;display:grid;gap:8px;align-content:start}
+.phase .w{font:500 13px var(--f-latin);color:var(--gold-soft);letter-spacing:.06em}
+.phase h3{font-size:24px;color:#F3EBDD}
+.phase ul{margin:0;padding:0 18px 0 0;font-size:14.5px;color:#BDB6A9;display:grid;gap:4px}
+
+/* ---------- impact ---------- */
+.impact{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.imp{background:#fff;border:1px solid #E6DCCB;border-radius:6px;padding:24px 20px;display:grid;gap:6px}
+.imp .n{font:700 40px var(--f-brand);color:var(--olive)}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.why div{display:grid;gap:6px}
+.why h3{font-size:22px}
+.why p{font-size:15px;color:#555}
+
+/* ---------- cta ---------- */
+.cta{position:relative;color:#EFE8DC;text-align:center;overflow:hidden;background:#111}
+.cta .bg{position:absolute;inset:0;background:center/cover no-repeat;opacity:.35}
+.cta .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(17,17,18,.4),rgba(17,17,18,.9))}
+.cta .wrap{position:relative;display:grid;gap:22px;justify-items:center}
+.cta h2{font-size:clamp(34px,4.6vw,60px)}
+.cta .btn{font-size:16px;padding:14px 30px}
+.cta .pair img{height:56px}
+.foot{background:#0f1011;color:#8d877c;font-size:13px;padding:26px 0}
+.foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.foot .pair img{height:28px}
+.foot .pair .nm{font-size:12px}
+
+/* responsive */
+@media (max-width:1000px){
+  .hero-in{grid-template-columns:1fr}
+  .twin-grid,.panel.on,.film-grid{grid-template-columns:1fr}
+  .stage{height:480px}
+  .mods,.halls4{grid-template-columns:repeat(2,1fr)}
+  .journey{grid-template-columns:repeat(3,1fr)}
+  .road,.impact{grid-template-columns:repeat(2,1fr)}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .t-c{grid-row:span 1}
+}
+@media (max-width:680px){
+  section{padding:72px 0}
+  .pair .nm,.pair .op{display:none}
+  .tag{display:none}
+  .facts{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-inline-start:0}
+  .gaps{grid-template-columns:1fr}
+  .gap{border-inline-end:0!important;border-bottom:1px solid var(--line)!important}
+  .gap:last-child{border-bottom:0!important}
+  .mods,.road,.impact,.why,.bento{grid-template-columns:1fr}
+  .t-a,.t-b{grid-column:span 1}
+  .journey,.halls4{grid-template-columns:1fr 1fr}
+  .rooms{grid-template-columns:1fr}
+  .bookbar{grid-template-columns:1fr 1fr}
+  .bookbar{margin:-24px 12px 0}
+  .bookbar .btn{grid-column:span 2;padding:10px}
+  .rooms{padding:14px}
+  .pl-grid,.two{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr 1fr}
+  .admin{grid-template-columns:1fr}
+  .side{display:none}
+  .halls{grid-template-columns:1fr 1fr}
+  .slots{grid-template-columns:repeat(4,1fr)}
+  .site-h nav{display:none}
+  .ring-wrap{height:340px;margin-top:40px}
+  .ring{width:150px;height:210px}
+  .hero-in{min-height:0;padding:120px 0 50px}
+  .stage{height:400px}
+  input,select,textarea{font-size:16px!important}
+  .cover-card,.tag,.hotspot span{backdrop-filter:none;-webkit-backdrop-filter:none}
+  .cover-card{max-width:none;justify-self:stretch}
+  .bento{grid-auto-rows:200px}
+  #hall3d{height:200px}
+  .phone{width:100%;max-width:262px}
+  .film-grid{gap:24px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ================= COVER ================= -->
+<header class="hero" id="top">
+  <video id="heroVid" poster="media/film-poster.jpg" autoplay muted loop playsinline></video>
+  <div class="shade"></div>
+  <div class="topbar"><div class="wrap">
+    <div class="pair"><img src="img/elevate-logo.png" alt="شعار ELEVATE"><span class="nm">ELEVATE</span><span class="x">×</span><img src="img/opal-logo.png" alt="شعار فندق أوبال"><span class="op">OPAL HOTEL</span></div>
+    <div class="tag">عرض فني وتجاري · تشرين الثاني 2026</div>
+  </div></div>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <span class="eyebrow">مقدَّم إلى إدارة فندق أوبال عمّان</span>
+      <h1>كل ضيافة أوبال<br>في <em>منظومة واحدة</em></h1>
+      <p class="lead">تقترح <span class="latin" style="font-weight:700;letter-spacing:.14em">ELEVATE</span> بناء <span class="brand gold">OPAL ONE</span>: منصة رقمية بهوية أوبال نفسها، تجمع حجز الغرف، قاعات الأفراح الأربع، Aqua Spa، بيت الكرم وكافيه ماتشو بيتشو، ولوحة إدارة الفندق كاملة في مكان واحد.</p>
+      <div class="hero-meta">
+        <span><b>81</b> غرفة وجناح</span>
+        <span><b>4</b> قاعات مناسبات</span>
+        <span><b>4.5★</b> على جوجل</span>
+        <span>طريق المطار · عمّان</span>
+      </div>
+    </div>
+    <aside class="cover-card">
+      <div class="row2"><img src="img/elevate-logo.png" alt=""><div><small>مقدَّم من</small><br><b class="latin">ELEVATE</b></div></div>
+      <p>شريككم التقني لبناء منظومة أوبال الرقمية، من التصميم حتى التشغيل والدعم.</p>
+      <a class="play" href="#film"><i></i>شاهد فيلم أوبال</a>
+    </aside>
+  </div>
+</header>
+
+<!-- ================= WHO OPAL IS ================= -->
+<section id="opal">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">ما فهمناه عن أوبال</span>
+      <h2>فندق بأربعة عوالم تحت سقف واحد</h2>
+      <p class="mute">أوبال ليس غرفًا فقط. هو وجهة أفراح، ومطعم لبناني، وسبا متكامل، وكافيه بطابع الإنكا. كل عالم منها يحتاج تجربة حجز وتشغيل خاصة به، وكلها يجب أن تتكلم مع بعضها.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><span class="n tnum">81</span><span class="l">غرفة وجناح بطراز إيطالي كلاسيكي، من Deluxe حتى Family Apartment</span></div>
+      <div class="fact"><span class="n tnum">4</span><span class="l">قاعات: Imperial · Massaya · Palace · Opera &amp; Petra</span></div>
+      <div class="fact"><span class="n tnum">3,858</span><span class="l">تقييم على جوجل بمعدّل 4.5، والإفطار والموظفون أكثر ما يُمدح</span></div>
+      <div class="fact"><span class="n tnum">150K+</span><span class="l">متابع على فيسبوك وإنستغرام، جمهور جاهز للحجز المباشر</span></div>
+    </div>
+
+    <div class="ring-wrap" id="ringWrap" aria-label="معرض صور أوبال ثلاثي الأبعاد، اسحب لتدويره">
+      <div class="ring" id="ring"></div>
+      <div class="ring-floor"></div>
+    </div>
+    <p class="hint">صور أوبال الرسمية · اسحب لتدوير المعرض</p>
+
+    <div class="bento">
+      <article class="tile t-a tilt ph" style="background-image:url(img/imperial-hall.jpg)">
+        <h3>قاعات الأفراح والمناسبات</h3>
+        <p>قاعة Imperial بأسقفها العالية وثرياتها وممرّها المضيء، إلى جانب Massaya وPalace وOpera &amp; Petra.</p>
+        <div class="chips"><span class="chip">أعراس</span><span class="chip">خطوبات</span><span class="chip">مؤتمرات</span><span class="chip">5 قاعات اجتماعات</span></div>
+      </article>
+      <article class="tile t-b tilt ph" style="background-image:url(img/karam-night.jpg)">
+        <h3>بيت الكرم</h3>
+        <p>مطبخ لبناني بمشاوي وكبّة وحلويات، جلسات داخلية وتحت النجوم.</p>
+      </article>
+      <article class="tile t-c tilt ph" style="background-image:url(img/hammam.jpg)">
+        <h3>Aqua Spa</h3>
+        <p>حمّام تركي ومغربي، مساج، جاكوزي، وصالون سيدات.</p>
+      </article>
+      <article class="tile tilt ph" style="background-image:url(img/cafe-mural.jpg)">
+        <h3>ماتشو بيتشو</h3>
+        <p>كافيه بطابع الإنكا وتراس مشمس.</p>
+      </article>
+      <article class="tile t-b tilt ph" style="background-image:url(img/room.jpg)">
+        <h3>الغرف والأجنحة</h3>
+        <p>من Deluxe وTwin حتى Family Suite وFamily Apartment، بإطلالات على الحديقة.</p>
+      </article>
+      <article class="tile tilt ph" style="background-image:url(img/food-spread.jpg)">
+        <h3>خدمة الغرف 24 ساعة</h3>
+        <p>من مطبخ بيت الكرم إلى الغرفة.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HALLS ================= -->
+<section class="dark" id="halls">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">القاعات الأربع</span>
+      <h2>كل قاعة لها بابها، ولها صفحتها في النظام</h2>
+      <p class="mute">لكل قاعة في OPAL ONE تقويم توفّر، وسعة، وباقات، وصور، ومنسّق مسؤول. العروسان يبدآن من هنا قبل أي مكالمة.</p>
+    </div>
+    <div class="halls4">
+      <div class="door tilt ph" style="background-image:url(img/door-imperial.jpg)"><span><b>IMPERIAL</b><small>القاعة الكبرى للأعراس الفاخرة</small></span></div>
+      <div class="door tilt ph" style="background-image:url(img/door-massaya.jpg)"><span><b>MASSAYA</b><small>للخطوبات والحفلات المتوسطة</small></span></div>
+      <div class="door tilt ph" style="background-image:url(img/door-palace.jpg)"><span><b>PALACE</b><small>للمناسبات والعشاءات الخاصة</small></span></div>
+      <div class="door tilt ph" style="background-image:url(img/door-opera.jpg)"><span><b>OPERA &amp; PETRA</b><small>للمؤتمرات وورش العمل</small></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GAPS ================= -->
+<section class="dark" id="gaps" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">الفرص التي رصدناها</span>
+      <h2>ضيافة بخمس نجوم، ورحلة رقمية متفرّقة</h2>
+      <p class="mute">راجعنا موقع أوبال الحالي، قنوات الحجز، وصفحات التواصل. الخدمة داخل الفندق ممتازة، لكن الطريق إليها رقميًا يمرّ عبر عدة أبواب منفصلة.</p>
+    </div>
+    <div class="gaps">
+      <div class="gap"><span class="k">01</span><div><h3>الحجز يخرج من موقع أوبال</h3><p class="mute">زر «Check Rates» ينقل الضيف إلى محرّك حجز خارجي بتصميم مختلف، فتضيع الهوية ويزيد احتمال ترك الحجز في منتصفه.</p><span class="now">الحل: محرّك حجز داخل الموقع بهوية أوبال</span></div></div>
+      <div class="gap"><span class="k">02</span><div><h3>الأفراح تبدأ بمكالمة هاتفية</h3><p class="mute">لا يرى العروسان التواريخ المتاحة ولا السعات ولا الباقات قبل الاتصال، فيتحوّل كل استفسار إلى سلسلة مكالمات ومتابعة يدوية.</p><span class="now">الحل: مخطّط أفراح تفاعلي مع تقويم ومجسّم للقاعة</span></div></div>
+      <div class="gap"><span class="k">03</span><div><h3>السبا والمطعم بلا حجز إلكتروني</h3><p class="mute">جلسات السبا وطاولات بيت الكرم تُحجز بالهاتف أو عبر الرسائل، دون تذكير آلي أو منع للتعارض بين المواعيد.</p><span class="now">الحل: مواعيد وطاولات تُحجز بضغطة مع تذكير واتساب</span></div></div>
+      <div class="gap"><span class="k">04</span><div><h3>جزء كبير من الحجوزات عبر المنصات</h3><p class="mute">Booking وExpedia وغيرها تأخذ عادةً عمولة بين 15% و25% من كل ليلة، وبيانات الضيف تبقى عندها لا عند الفندق.</p><span class="now">الحل: تحويل جمهور السوشال إلى حجز مباشر وبرنامج ولاء</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIGITAL TWIN ================= -->
+<section class="twin" id="twin">
+  <div class="wrap twin-grid">
+    <div class="twin-copy">
+      <span class="eyebrow">التوأم الرقمي</span>
+      <h2>أوبال كاملًا، على شاشة واحدة، بشكل ثلاثي الأبعاد</h2>
+      <p class="mute">مجسّم الفندق داخل لوحة الإدارة ليس للزينة. كل نافذة فيه غرفة حقيقية، ولونها يتغيّر حسب حالتها لحظة بلحظة. المدير يرى الفندق كله بنظرة.</p>
+      <div class="modes" role="group" aria-label="طريقة العرض">
+        <button type="button" class="mode" aria-pressed="true" data-m="night">العرض الليلي</button>
+        <button type="button" class="mode" aria-pressed="false" data-m="status">حالة الغرف الآن</button>
+      </div>
+      <div class="twin-legend" id="twinLegend"><span><i style="background:#4FB06B"></i>جاهزة</span><span><i style="background:#E9A23B"></i>قيد التنظيف</span><span><i style="background:#D9534F"></i>صيانة</span><span><i style="background:#6B8FD6"></i>مشغولة</span></div>
+      <ul>
+        <li>اضغط على أي غرفة في النظام لترى الضيف والفاتورة وطلباته</li>
+        <li>قاعة Imperial تضيء عندما يكون فيها حفل اليوم</li>
+        <li>نفس المجسّم يظهر على تابلت مشرف التدبير الفندقي</li>
+      </ul>
+    </div>
+    <div class="stage" aria-label="مجسّم ثلاثي الأبعاد لفندق أوبال، اسحب لتدويره">
+      <canvas id="scene"></canvas>
+      <div id="hotspots"></div>
+      <div class="fallback" id="fallback">OPAL HOTEL</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODULES ================= -->
+<section id="system">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">المنظومة المقترحة</span>
+      <h2><span class="brand gold">OPAL ONE</span> ثمانية أجزاء، قاعدة بيانات واحدة</h2>
+      <p class="mute">كل جزء يعمل وحده بكفاءة، والقوة الحقيقية أنها كلها مترابطة: ضيف حجز عرسه في Imperial يظهر عند الاستقبال وفي السبا وفي المطعم بملف واحد.</p>
+    </div>
+    <div class="mods">
+      <div class="mod"><div class="ph" style="background-image:url(img/facade-day.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></div></div><div class="body"><h3>الموقع ومحرّك الحجز</h3><p>موقع عربي وإنجليزي بهوية أوبال، والحجز يتمّ داخله.</p><ul><li>توفّر وأسعار لحظية</li><li>دفع إلكتروني آمن</li><li>عروض وأكواد خصم</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/stage.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.7 7.1 18.2 8 12.7 4 8.8 9.5 8z"/></svg></div></div><div class="body"><h3>استوديو الأفراح</h3><p>القاعة والتاريخ والباقة ومجسّم الجلسات، وتقدير سعر فوري.</p><ul><li>تقويم توفّر لكل قاعة</li><li>مجسّم ثلاثي الأبعاد للطاولات</li><li>دفعة عربون إلكترونية</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/spa-hall.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c-4-3-7-6-7-10a7 7 0 0114 0c0 4-3 7-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg></div></div><div class="body"><h3>حجوزات Aqua Spa</h3><p>الخدمة والمعالج والوقت، بأقسام منفصلة للرجال والسيدات.</p><ul><li>منع تعارض المواعيد</li><li>باقات سبا مع الإقامة</li><li>تذكير تلقائي</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/karam-in.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3v8a3 3 0 006 0V3M9 3v18M18 3c-2 0-3 3-3 7h3v11"/></svg></div></div><div class="body"><h3>المطاعم وخدمة الغرف</h3><p>طاولات بيت الكرم وماتشو بيتشو، منيو QR، وطلبات الغرف.</p><ul><li>داخلي وتراس تحت النجوم</li><li>منيو رقمي بالصور</li><li>طلبات تُرسل للمطبخ</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/room.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div></div><div class="body"><h3>بوابة الضيف</h3><p>تسجيل وصول مسبق، طلبات الغرفة، توصيل المطار، وفاتورة واضحة.</p><ul><li>Check-in إلكتروني</li><li>طلبات تنظيف وصيانة</li><li>محادثة مع الاستقبال</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/facade-night.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div></div><div class="body"><h3>لوحة الإدارة والتوأم الرقمي</h3><p>الإشغال والإيرادات والفعاليات، ومجسّم الفندق بحالة كل غرفة.</p><ul><li>تقارير يومية تلقائية</li><li>صلاحيات حسب القسم</li><li>حالة الغرف لحظيًا</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/cafe-wide.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 010 7"/></svg></div></div><div class="body"><h3>CRM وبرنامج الولاء</h3><p>ملف لكل ضيف بتاريخه وتفضيلاته، ونقاط «Opal Circle» تعيده للحجز المباشر.</p><ul><li>حملات واتساب وبريد</li><li>عروض أعياد الميلاد</li><li>تقييم بعد المغادرة</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/exterior.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.5"/></svg></div></div><div class="body"><h3>ربط القنوات</h3><p>مزامنة التوفّر والأسعار مع Booking وExpedia حتى لا يتكرّر بيع الغرفة.</p><ul><li>Channel Manager</li><li>ربط أجهزة الدفع</li><li>واجهة API مفتوحة</li></ul></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SHOWCASE ================= -->
+<section class="dark" id="preview">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">كيف سيبدو النظام</span>
+      <h2>جرّبوه الآن، هذه شاشات تفاعلية</h2>
+      <p class="mute">كل الشاشات أدناه بهوية أوبال وصوره الرسمية: الذهبي، الفحمي، الأخضر الزيتوني، وشعار الـ O. اضغطوا وجرّبوا.</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="شاشات النظام">
+      <button class="tab" role="tab" id="t-book" aria-controls="p-book" aria-selected="true">موقع الحجز</button>
+      <button class="tab" role="tab" id="t-wed" aria-controls="p-wed" aria-selected="false">استوديو الأفراح</button>
+      <button class="tab" role="tab" id="t-spa" aria-controls="p-spa" aria-selected="false">Aqua Spa</button>
+      <button class="tab" role="tab" id="t-dine" aria-controls="p-dine" aria-selected="false">بيت الكرم</button>
+      <button class="tab" role="tab" id="t-admin" aria-controls="p-admin" aria-selected="false">لوحة الإدارة</button>
+    </div>
+
+    <div class="panel on" role="tabpanel" id="p-book" aria-labelledby="t-book">
+      <div class="browser">
+        <div class="bbar"><i></i><i></i><i></i><div class="url">opalhoteljo.com/book</div></div>
+        <div class="site-h"><div class="site-logo"><img src="img/opal-logo.png" alt="">OPAL HOTEL</div><nav><span>الغرف</span><span>الأفراح</span><span>المطعم</span><span>السبا</span><span>الكافيه</span></nav><button class="btn ghost" type="button">دخول</button></div>
+        <div class="site-hero ph" style="background-image:url(img/facade-night.jpg)"><h4>إقامة تليق بك على طريق المطار</h4></div>
+        <form class="bookbar" id="bookForm">
+          <label for="bIn">الوصول<input id="bIn" type="date" value="2026-11-26"></label>
+          <label for="bOut">المغادرة<input id="bOut" type="date" value="2026-11-28"></label>
+          <label for="bG">الضيوف<select id="bG"><option>1 بالغ</option><option selected>2 بالغين</option><option>2 بالغين + طفل</option><option>عائلة (4)</option></select></label>
+          <button class="btn" type="submit">تحقّق من التوفّر</button>
+        </form>
+        <div class="rooms" id="rooms"></div>
+      </div>
+      <div class="panel-note">
+        <div class="phone"><div class="scr" id="confirm"></div></div>
+        <span class="sample">الأسعار توضيحية وتُضبط من لوحة الإدارة</span>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-wed" aria-labelledby="t-wed">
+      <div class="browser">
+        <div class="bbar"><i></i><i></i><i></i><div class="url">opalhoteljo.com/weddings/plan</div></div>
+        <div class="site-h"><div class="site-logo"><img src="img/opal-logo.png" alt="">OPAL HOTEL</div><span class="mute" style="font-size:13px">مخطّط حفلك</span></div>
+        <div class="planner">
+          <div class="halls" id="hallsPick"></div>
+          <canvas id="hall3d" aria-label="مجسّم القاعة ثلاثي الأبعاد مع الطاولات"></canvas>
+          <div class="pl-grid">
+            <div class="cal">
+              <div class="cal-h"><button type="button" id="calPrev" aria-label="الشهر السابق">›</button><span id="calTitle"></span><button type="button" id="calNext" aria-label="الشهر التالي">‹</button></div>
+              <div class="days" id="days"></div>
+              <div class="legend"><span><i style="background:#f3efe7"></i>متاح</span><span><i style="background:#f3e3c3"></i>محجوز مبدئيًا</span><span><i style="background:#e9e2d6"></i>محجوز</span></div>
+            </div>
+            <div class="ctrl">
+              <label for="guests"><span>عدد الضيوف: <b id="gOut" class="tnum">350</b> · <span id="tOut" class="tnum"></span></span><input id="guests" type="range" min="50" max="800" step="10" value="350"></label>
+              <label for="pkg">الباقة<select id="pkg"><option value="18">الفضية: عشاء بوفيه وضيافة</option><option value="26" selected>الذهبية: بوفيه فاخر وكوشة وإضاءة</option><option value="38">الإمبريال: كل شيء وجناح العرسان</option></select></label>
+              <div class="xtras" id="xtras">
+                <label><input type="checkbox" value="450" checked>زفّة</label>
+                <label><input type="checkbox" value="600">تصوير وفيديو</label>
+                <label><input type="checkbox" value="350">ورد طبيعي</label>
+                <label><input type="checkbox" value="0" checked>جناح العرسان</label>
+              </div>
+            </div>
+          </div>
+          <div class="est"><div><small id="estSub">قاعة IMPERIAL · لم يُحدَّد تاريخ</small><span class="v tnum" id="estV">—</span></div><button class="btn" type="button" id="holdBtn">احجز التاريخ مبدئيًا</button></div>
+        </div>
+      </div>
+      <div class="panel-note">
+        <h3>من استفسار إلى حجز بدقيقتين</h3>
+        <ul>
+          <li>العروسان يريان القاعة بمجسّم ثلاثي الأبعاد، والطاولات تتغيّر مع عدد الضيوف</li>
+          <li>التواريخ المتاحة لكل قاعة ظاهرة قبل أي اتصال</li>
+          <li>تقدير سعر فوري حسب الضيوف والباقة والإضافات</li>
+          <li>حجز مبدئي يثبت التاريخ 72 ساعة مع دفعة عربون إلكترونية</li>
+          <li>صفحة خاصة للعرس فيها دعوة رقمية وحجز غرف للضيوف بسعر خاص</li>
+        </ul>
+        <span class="sample">السعات والأسعار هنا توضيحية</span>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-spa" aria-labelledby="t-spa">
+      <div class="browser">
+        <div class="bbar"><i></i><i></i><i></i><div class="url">opalhoteljo.com/spa</div></div>
+        <div class="site-h"><div class="site-logo" style="color:var(--olive)"><img src="img/opal-logo.png" alt="">AQUA SPA</div><span class="mute" style="font-size:13px">by Opal Hotel</span></div>
+        <div class="site-hero ph" style="background-image:url(img/spa-hall.jpg);height:150px"><h4>سبا بلا مكالمات</h4></div>
+        <div class="spa">
+          <div class="seg" role="group" aria-label="القسم"><button type="button" aria-pressed="true" data-sec="m">قسم الرجال</button><button type="button" aria-pressed="false" data-sec="w">قسم السيدات</button></div>
+          <div class="svc" id="svc"></div>
+          <div><div class="mute" style="font-size:12.5px;margin-bottom:6px">المواعيد المتاحة يوم الخميس</div><div class="slots" id="slots"></div></div>
+          <div class="est"><div><small id="spaSub">اختر الخدمة والوقت</small><span class="v" id="spaV">—</span></div><button class="btn" type="button" id="spaBtn">تأكيد الموعد</button></div>
+        </div>
+      </div>
+      <div class="panel-note">
+        <h3>سبا بلا مكالمات ولا تعارض</h3>
+        <ul>
+          <li>أقسام منفصلة للرجال والسيدات وصالون السيدات بتقويم مستقل</li>
+          <li>النظام يعرف المعالجين وغرف العلاج ويمنع الحجز المزدوج</li>
+          <li>نزلاء الفندق يضيفون الجلسة لفاتورة الغرفة مباشرة</li>
+          <li>رسالة واتساب للتذكير قبل الموعد بساعتين</li>
+        </ul>
+        <span class="sample">الخدمات والأسعار توضيحية</span>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-dine" aria-labelledby="t-dine">
+      <div class="browser">
+        <div class="bbar"><i></i><i></i><i></i><div class="url">opalhoteljo.com/bait-al-karam</div></div>
+        <div class="site-h"><div class="site-logo"><img src="img/opal-logo.png" alt="">BAIT AL-KARAM</div><span class="mute" style="font-size:13px">حجز طاولة</span></div>
+        <div class="res">
+          <div class="areas" id="areas">
+            <button type="button" class="area on" data-a="in"><div class="ph" style="background-image:url(img/karam-in.jpg)"></div><span><b>القاعة الداخلية</b><span class="mute">أجواء دافئة للعائلات</span></span></button>
+            <button type="button" class="area" data-a="out"><div class="ph" style="background-image:url(img/terrace.jpg)"></div><span><b>تحت النجوم</b><span class="mute">التراس الخارجي</span></span></button>
+            <button type="button" class="area" data-a="cafe"><div class="ph" style="background-image:url(img/cafe-wide.jpg)"></div><span><b>ماتشو بيتشو</b><span class="mute">الكافيه والتراس المشمس</span></span></button>
+          </div>
+          <div class="tables" id="tables" aria-label="مخطط الطاولات"></div>
+          <div class="legend"><span><i style="background:#fff;border:1px solid #ddd"></i>متاحة</span><span><i style="background:#e6dfd2"></i>محجوزة</span><span><i style="background:var(--gold)"></i>طاولتك</span></div>
+          <div class="est"><div><small id="tSub">اختر طاولة من المخطط</small><span class="v" id="tV">الجمعة · 8:30 مساءً</span></div><button class="btn" type="button">تأكيد الحجز</button></div>
+        </div>
+      </div>
+      <div class="panel-note">
+        <div class="phone"><div class="scr">
+          <div class="notch"><i></i></div>
+          <div class="site-hero ph" style="background-image:url(img/karam-night.jpg);height:120px"><h4 style="font-size:22px">منيو بيت الكرم</h4></div>
+          <div id="menu"></div>
+          <div class="cart"><span>غرفة 312 · خدمة الغرف</span><span class="tnum" id="cart">0.00 د.أ</span></div>
+        </div></div>
+        <span class="sample">المنيو الرقمي يُفتح بمسح QR على الطاولة أو في الغرفة</span>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-admin" aria-labelledby="t-admin">
+      <div class="browser">
+        <div class="bbar"><i></i><i></i><i></i><div class="url">one.opalhoteljo.com/dashboard</div></div>
+        <div class="admin">
+          <aside class="side"><div class="site-logo"><img src="img/opal-logo.png" alt="">ONE</div><a class="on">الرئيسية</a><a>الحجوزات</a><a>الأفراح</a><a>السبا</a><a>المطاعم</a><a>التدبير الفندقي</a><a>الضيوف</a><a>التقارير</a></aside>
+          <div class="main">
+            <div class="kpis">
+              <div class="kpi"><span class="mute">إشغال الليلة</span><span class="v tnum">78%</span><span class="s">▲ 6% عن الأسبوع الماضي</span></div>
+              <div class="kpi"><span class="mute">حجوزات مباشرة اليوم</span><span class="v tnum">14</span><span class="s">▲ بلا عمولة منصات</span></div>
+              <div class="kpi"><span class="mute">فعاليات هذا الأسبوع</span><span class="v tnum">5</span><span class="s">3 أعراس · 2 مؤتمر</span></div>
+              <div class="kpi"><span class="mute">إيراد اليوم</span><span class="v tnum">6,420</span><span class="s dn">▼ 2% · د.أ</span></div>
+            </div>
+            <div class="two">
+              <div class="card"><h5>الإشغال لآخر 14 يوم</h5><svg id="occ" viewBox="0 0 420 150" width="100%" role="img" aria-label="مخطط الإشغال"></svg></div>
+              <div class="card"><h5>فعاليات اليوم</h5>
+                <div class="row"><span>عرس آل الخطيب · Imperial</span><span class="pill p-w">تجهيز</span></div>
+                <div class="row"><span>خطوبة · Massaya</span><span class="pill p-ok">مؤكد</span></div>
+                <div class="row"><span>ورشة شركة · Opera</span><span class="pill p-ok">جارٍ</span></div>
+                <div class="row"><span>عشاء عمل · بيت الكرم</span><span class="pill p-g">8:00 م</span></div>
+              </div>
+            </div>
+            <div class="two">
+              <div class="card"><h5>وصول اليوم</h5>
+                <div class="row"><span>أحمد ن. · Family Suite · ليلتان</span><span class="pill p-ok">دفع مسبق</span></div>
+                <div class="row"><span>Sarah K. · Deluxe · 3 ليالٍ</span><span class="pill p-w">Booking.com</span></div>
+                <div class="row"><span>محمد ع. · Twin · ليلة</span><span class="pill p-ok">Check-in إلكتروني</span></div>
+              </div>
+              <div class="card"><h5>حالة الغرف</h5>
+                <div class="row"><span>جاهزة</span><span class="pill p-ok tnum">52</span></div>
+                <div class="row"><span>قيد التنظيف</span><span class="pill p-w tnum">17</span></div>
+                <div class="row"><span>صيانة</span><span class="pill p-x tnum">2</span></div>
+                <div class="row"><span>مشغولة</span><span class="pill p-g tnum">10</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-note">
+        <h3>الإدارة ترى الفندق كله من شاشة واحدة</h3>
+        <ul>
+          <li>كل قسم يرى ما يخصّه: الاستقبال، الأفراح، السبا، المطبخ، التدبير</li>
+          <li>تقرير يومي يصل للمالك صباحًا على البريد والواتساب</li>
+          <li>مقارنة الحجز المباشر مع المنصات لمعرفة كم وُفّر من العمولات</li>
+          <li>يعمل على الكمبيوتر والتابلت والهاتف</li>
+        </ul>
+        <span class="sample">البيانات في هذه الشاشة نموذجية</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FILM ================= -->
+<section id="film">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">فيلم أوبال</span>
+      <h2>محتوى تسويقي جاهز من داخل النظام</h2>
+      <p class="mute">أعددنا هذا الفيلم وهذا الريل من صور أوبال الرسمية كمثال على ما ينتجه قسم التسويق في OPAL ONE: فيديو للموقع، وريلز للسوشال، كلها بهوية الفندق وتقود مباشرة لصفحة الحجز.</p>
+    </div>
+    <div class="film-grid">
+      <div class="film"><video src="media/opal-film.mp4" poster="media/film-poster.jpg" controls playsinline preload="metadata"></video></div>
+      <div class="reel">
+        <div class="phone"><div class="scr"><video src="media/halls-reel.mp4" poster="media/reel-poster.jpg" autoplay muted loop playsinline></video></div></div>
+        <p>ريل «القاعات الأربع» لإنستغرام</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JOURNEY ================= -->
+<section id="journey" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">رحلة الضيف</span>
+      <h2>من أول إعلان حتى التقييم بعد المغادرة</h2>
+    </div>
+    <div class="journey">
+      <div class="step"><div class="ph" style="background-image:url(img/cafe-mural2.jpg)"><b>1</b></div><h3>يكتشف</h3><p>منشور على إنستغرام يقوده مباشرة لصفحة العرض في الموقع</p></div>
+      <div class="step"><div class="ph" style="background-image:url(img/room.jpg)"><b>2</b></div><h3>يحجز</h3><p>يختار الغرفة ويضيف جلسة سبا وعشاء ويدفع في دقيقتين</p></div>
+      <div class="step"><div class="ph" style="background-image:url(img/exterior.jpg)"><b>3</b></div><h3>يصل</h3><p>تسجيل وصول مسبق، والاستقبال يعرف اسمه وتفضيلاته</p></div>
+      <div class="step"><div class="ph" style="background-image:url(img/kibbeh.jpg)"><b>4</b></div><h3>يتذوّق</h3><p>يطلب من المنيو الرقمي في بيت الكرم أو من غرفته</p></div>
+      <div class="step"><div class="ph" style="background-image:url(img/jacuzzi.jpg)"><b>5</b></div><h3>يسترخي</h3><p>يحجز الحمّام والجاكوزي من هاتفه ويُضاف للفاتورة</p></div>
+      <div class="step"><div class="ph" style="background-image:url(img/facade-day.jpg)"><b>6</b></div><h3>يعود</h3><p>تقييم بعد المغادرة ونقاط Opal Circle لحجزه القادم</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ROADMAP ================= -->
+<section class="dark" id="plan">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">خطة التنفيذ</span>
+      <h2>أربع مراحل، وكل مرحلة تشتغل فور تسليمها</h2>
+      <p class="mute">نبدأ بما يجلب دخلًا مباشرًا أولًا، ثم نبني فوقه. كل مرحلة تُسلَّم وتُدرَّب عليها الفرق قبل الانتقال للتالية.</p>
+    </div>
+    <div class="road">
+      <div class="phase"><span class="w">WEEKS 1–3</span><h3>الاكتشاف والتصميم</h3><ul><li>ورش عمل مع الأقسام</li><li>تصميم كامل بهوية أوبال</li><li>اعتماد الشاشات</li></ul></div>
+      <div class="phase"><span class="w">WEEKS 4–8</span><h3>الموقع والحجز</h3><ul><li>الموقع الجديد عربي وإنجليزي</li><li>محرّك الحجز والدفع</li><li>ربط Booking وExpedia</li></ul></div>
+      <div class="phase"><span class="w">WEEKS 9–12</span><h3>الأفراح والسبا والمطاعم</h3><ul><li>استوديو الأفراح ومجسّم القاعات</li><li>حجوزات السبا والطاولات</li><li>المنيو الرقمي وخدمة الغرف</li></ul></div>
+      <div class="phase"><span class="w">WEEKS 13–16</span><h3>الإدارة والولاء</h3><ul><li>لوحة الإدارة والتوأم الرقمي</li><li>CRM وبرنامج Opal Circle</li><li>تدريب ودعم بعد الإطلاق</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= IMPACT ================= -->
+<section id="impact">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">الأثر المستهدف</span>
+      <h2>ماذا يتغيّر في السنة الأولى</h2>
+      <p class="mute">أهداف نضعها معكم ونقيسها من لوحة الإدارة نفسها، شهرًا بشهر.</p>
+    </div>
+    <div class="impact">
+      <div class="imp"><span class="n tnum latin">+30%</span><b>حجوزات مباشرة</b><p class="mute">تحويل متابعي السوشال إلى حجز بلا عمولة</p></div>
+      <div class="imp"><span class="n tnum latin">−50%</span><b>مكالمات الاستفسار</b><p class="mute">التواريخ والأسعار ظاهرة للضيف قبل الاتصال</p></div>
+      <div class="imp"><span class="n tnum latin">24/7</span><b>الحجز مفتوح</b><p class="mute">الغرف والسبا والطاولات تُحجز حتى بعد منتصف الليل</p></div>
+      <div class="imp"><span class="n tnum">1</span><b>ملف لكل ضيف</b><p class="mute">كل الأقسام ترى نفس الضيف ونفس تفضيلاته</p></div>
+    </div>
+    <div class="why">
+      <div><h3>مصمَّم لأوبال وحده</h3><p>ليس قالبًا جاهزًا. كل شاشة مبنية على قاعات أوبال وخدماته وأسمائه وصوره.</p></div>
+      <div><h3>بياناتكم ملككم</h3><p>استضافة آمنة، نسخ احتياطي يومي، وصلاحيات دقيقة لكل موظف.</p></div>
+      <div><h3>معكم بعد الإطلاق</h3><p>تدريب للفرق، دعم فني، وتطوير مستمر حسب ما تحتاجه الإدارة.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta" id="next">
+  <div class="bg ph" style="background-image:url(img/facade-night.jpg)"></div>
+  <div class="wrap">
+    <div class="pair"><img src="img/elevate-logo.png" alt="شعار ELEVATE"><span class="x">×</span><img src="img/opal-logo.png" alt="شعار فندق أوبال"></div>
+    <span class="eyebrow">الخطوة التالية</span>
+    <h2>نعرضها عليكم حيّة في الفندق</h2>
+    <p style="max-width:560px;color:#CFC8BB">جلسة 45 دقيقة مع الإدارة نمرّ فيها على كل شاشة، ونحدّد معًا أولويات المرحلة الأولى وجدولها.</p>
+    <button class="btn" type="button" id="ctaBtn">نحدّد موعد العرض</button>
+    <p id="ctaMsg" style="min-height:1.6em;color:var(--gold-soft)"></p>
+  </div>
+</section>
+<footer class="foot"><div class="wrap">
+  <div class="pair"><img src="img/elevate-logo.png" alt=""><span class="nm">ELEVATE</span></div>
+  <span>عرض <span class="brand gold">OPAL ONE</span> مقدَّم لفندق أوبال عمّان · تشرين الثاني 2026</span>
+  <span>صور الفندق من موقع أوبال الرسمي</span>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const MOBILE=matchMedia('(max-width:760px), (pointer:coarse)').matches;
+const FINE=matchMedia('(hover:hover) and (pointer:fine)').matches;
+const DPR=Math.min(devicePixelRatio||1,MOBILE?1.25:2);
+/* react only to width changes: mobile URL bars change height while scrolling */
+function onWidth(fn){let w=innerWidth;addEventListener('resize',()=>{if(innerWidth!==w){w=innerWidth;fn();}});}
+/* hero video: lighter file on phones, pause when off screen */
+(function(){const v=document.getElementById('heroVid');v.src=MOBILE?'media/opal-film-sm.mp4':'media/opal-film.mp4';if(!reduce)v.play().catch(()=>{});
+  document.querySelectorAll('video').forEach(vd=>{new IntersectionObserver(es=>{const e=es[0];if(e.isIntersecting){if(vd.autoplay&&!reduce)vd.play().catch(()=>{});}else vd.pause();},{threshold:.1}).observe(vd);});})();
+const GOLD=0xBB8B41;
+if(reduce){const v=document.getElementById('heroVid');v.removeAttribute('autoplay');}
+
+/* ---------------- 3D photo ring ---------------- */
+(function(){
+  const pics=[['facade-night','واجهة أوبال ليلًا'],['imperial-hall','قاعة Imperial'],['karam-night','بيت الكرم'],['hammam','الحمّام التركي'],['cafe-mural','ماتشو بيتشو'],['room','Family Suite'],['stage','كوشة الأفراح'],['food-spread','مشاوي بيت الكرم'],['jacuzzi','الجاكوزي'],['cafe-wide','تراس الكافيه'],['spa-hall','صالون السيدات'],['facade-day','أوبال نهارًا']];
+  const ring=document.getElementById('ring'),wrap=document.getElementById('ringWrap');
+  const n=pics.length,step=360/n;
+  let RAD=0;const calcR=()=>{RAD=Math.round((ring.offsetWidth/2)/Math.tan(Math.PI/n))+(MOBILE?20:40);};const R=()=>RAD;
+  pics.forEach((p,i)=>{const f=document.createElement('figure');f.style.backgroundImage=`url(img/${p[0]}.jpg)`;f.innerHTML=`<figcaption>${p[1]}</figcaption>`;ring.appendChild(f);});
+  const figs=[...ring.children];
+  function place(){calcR();const r=R();figs.forEach((f,i)=>f.style.transform=`rotateY(${i*step}deg) translateZ(${r}px)`);}
+  place();onWidth(place);
+  let rot=0,vel=0,drag=false,lx=0,last=performance.now(),vis=true;
+  new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(wrap);
+  wrap.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;wrap.setPointerCapture(e.pointerId);});
+  wrap.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lx;lx=e.clientX;vel=dx*.25;rot+=vel;});
+  addEventListener('pointerup',()=>drag=false);
+  (function tick(t){requestAnimationFrame(tick);if(!vis)return;const dt=Math.min(.05,(t-last)/1000);last=t;
+    if(!drag){vel*=.93;rot+=vel;if(!reduce)rot-=dt*9;}
+    ring.style.transform=`translateZ(-${R()}px) rotateX(-6deg) rotateY(${rot}deg)`;})(last);
+})();
+
+/* ---------------- tilt ---------------- */
+if(!reduce&&FINE)document.querySelectorAll('.tilt').forEach(el=>{
+  el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`perspective(900px) rotateY(${x*8}deg) rotateX(${-y*8}deg) scale(1.015)`;});
+  el.addEventListener('pointerleave',()=>el.style.transform='');
+});
+
+/* ---------------- 3D HOTEL (digital twin) ---------------- */
+const STATUS=['#4FB06B','#4FB06B','#4FB06B','#E9A23B','#6B8FD6','#4FB06B','#6B8FD6','#D9534F','#4FB06B','#E9A23B'];
+function facadeTex(cols,rows,opt){
+  const W=512,H=512,c=document.createElement('canvas');c.width=W;c.height=H;
+  const e=document.createElement('canvas');e.width=W;e.height=H;
+  const g=c.getContext('2d'),ge=e.getContext('2d');
+  g.fillStyle=opt.wall||'#E9DFCC';g.fillRect(0,0,W,H);ge.fillStyle='#000';ge.fillRect(0,0,W,H);
+  const cw=W/cols,rh=H/rows;let seed=opt.seed||1;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
+  for(let r=0;r<rows;r++)for(let k=0;k<cols;k++){
+    const x=k*cw+cw*.16,y=r*rh+rh*.18,w=cw*.68,h=rh*.6;
+    if(opt.arch){
+      const path=(cx)=>{cx.beginPath();cx.moveTo(x,y+h);cx.lineTo(x,y+w/2);cx.arc(x+w/2,y+w/2,w/2,Math.PI,0);cx.lineTo(x+w,y+h);cx.fill();};
+      g.fillStyle='#2b2a28';path(g);ge.fillStyle=opt.status?'#E9C27F':'rgb(255,190,110)';path(ge);continue;
+    }
+    if(opt.status){const col=STATUS[(rnd()*STATUS.length)|0];g.fillStyle=col;g.fillRect(x,y,w,h);ge.fillStyle=col;ge.fillRect(x,y,w,h);}
+    else{const lit=rnd()<.6;g.fillStyle=lit?'#f2c98a':'#26323a';g.fillRect(x,y,w,h);
+      if(lit){const t=.7+rnd()*.3;ge.fillStyle=`rgb(${255*t|0},${(150+rnd()*50)*t|0},${(60+rnd()*40)*t|0})`;ge.fillRect(x,y,w,h);}}
+    g.fillStyle='#BB8B41';g.fillRect(x-2,y+h+rh*.04,w+4,2);
+  }
+  g.fillStyle='rgba(187,139,65,.85)';for(let k=0;k<=cols;k++)g.fillRect(k*cw-2,0,4,H);
+  const t=new THREE.CanvasTexture(c),te=new THREE.CanvasTexture(e);t.encoding=THREE.sRGBEncoding;te.encoding=THREE.sRGBEncoding;
+  return {map:t,emissiveMap:te};
+}
+function signTex(text,sub){
+  const c=document.createElement('canvas');c.width=1024;c.height=256;const g=c.getContext('2d');
+  g.fillStyle='#E9C27F';g.font='700 150px Gelasio, Georgia, serif';g.textAlign='center';g.textBaseline='middle';
+  g.shadowColor='rgba(255,190,100,.9)';g.shadowBlur=30;g.fillText(text,512,sub?110:128);
+  if(sub){g.shadowBlur=0;g.font='500 46px "DM Sans", sans-serif';g.fillStyle='#d9b77a';g.fillText(sub,512,210);}
+  const tx=new THREE.CanvasTexture(c);tx.encoding=THREE.sRGBEncoding;return tx;
+}
+function initScene(){
+  const canvas=document.getElementById('scene');
+  let renderer;try{renderer=new THREE.WebGLRenderer({canvas,antialias:!MOBILE,alpha:true,powerPreference:'low-power'});}catch(e){document.getElementById('fallback').style.display='grid';return;}
+  renderer.setPixelRatio(DPR);renderer.outputEncoding=THREE.sRGBEncoding;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.82;
+  renderer.shadowMap.enabled=!MOBILE;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  const scene=new THREE.Scene();scene.fog=new THREE.Fog(0x1D1E20,70,140);
+  const cam=new THREE.PerspectiveCamera(34,1,.1,400);
+  scene.add(new THREE.HemisphereLight(0xffe2b8,0x1d1e20,.38));
+  const sun=new THREE.DirectionalLight(0xffc98a,.85);sun.position.set(-30,34,30);sun.castShadow=true;
+  sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-40,right:40,top:40,bottom:-40,far:120});scene.add(sun);
+  const rim=new THREE.DirectionalLight(0x8aa0c0,.35);rim.position.set(30,20,-30);scene.add(rim);
+  const root=new THREE.Group();scene.add(root);
+  const cream=0xEDE3D0;
+  const mStd=(c,o={})=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.6,metalness:0},o));
+  const goldM=mStd(GOLD,{metalness:.85,roughness:.28,emissive:0x3a2608,emissiveIntensity:.4});
+  const base=new THREE.Mesh(new THREE.CylinderGeometry(30,31,1.2,96),mStd(0x2a2b2e,{roughness:.9}));base.position.y=-.6;base.receiveShadow=true;root.add(base);
+  const plaza=new THREE.Mesh(new THREE.CylinderGeometry(29,29,.12,96),mStd(0xBFB29C,{roughness:.4}));plaza.position.y=.06;plaza.receiveShadow=true;root.add(plaza);
+  const ringM=new THREE.Mesh(new THREE.TorusGeometry(29.6,.12,8,160),goldM);ringM.rotation.x=Math.PI/2;ringM.position.y=.1;root.add(ringM);
+  const lawnM=mStd(0x485342,{roughness:.95});
+  [[-16,8,10,10],[14,12,12,8],[-4,-18,26,8]].forEach(([x,z,w,d])=>{const l=new THREE.Mesh(new THREE.BoxGeometry(w,.2,d),lawnM);l.position.set(x,.16,z);l.receiveShadow=true;root.add(l);});
+  const floors=6,TW=18,TD=8,TH=16;
+  const T={night:{f:facadeTex(9,floors,{seed:7}),s:facadeTex(4,floors,{seed:11}),a:facadeTex(6,1,{arch:true,wall:'#EDE3D0'}),a2:facadeTex(4,1,{arch:true,wall:'#EDE3D0'})},
+           status:{f:facadeTex(9,floors,{status:true,seed:3}),s:facadeTex(4,floors,{status:true,seed:5}),a:facadeTex(6,1,{arch:true,status:true,wall:'#EDE3D0'}),a2:facadeTex(4,1,{arch:true,status:true,wall:'#EDE3D0'})}};
+  const mk=(t,i)=>new THREE.MeshStandardMaterial({color:0xffffff,map:t.map,emissive:0xffffff,emissiveMap:t.emissiveMap,emissiveIntensity:i,roughness:.55});
+  const front=mk(T.night.f,1.6),side=mk(T.night.s,1.6),roofM=mStd(cream);
+  const tower=new THREE.Mesh(new THREE.BoxGeometry(TW,TH,TD),[side,side,roofM,roofM,front,front]);
+  tower.position.set(0,3.4+TH/2,-2);tower.castShadow=true;tower.receiveShadow=true;root.add(tower);
+  const glass=new THREE.MeshStandardMaterial({color:0x2b2218,emissive:0xffb766,emissiveIntensity:.55,roughness:.15,metalness:.3});
+  const lobby=new THREE.Mesh(new THREE.BoxGeometry(TW+2,3.4,TD+2),glass);lobby.position.set(0,1.8,-2);lobby.castShadow=true;root.add(lobby);
+  const lobbyCap=new THREE.Mesh(new THREE.BoxGeometry(TW+2.4,.35,TD+2.4),goldM);lobbyCap.position.set(0,3.55,-2);root.add(lobbyCap);
+  for(let i=-4;i<=4;i++){const col=new THREE.Mesh(new THREE.BoxGeometry(.28,3.4,.28),goldM);col.position.set(i*2.2,1.8,3.05);root.add(col);}
+  const crown=new THREE.Mesh(new THREE.BoxGeometry(TW+.8,.6,TD+.8),goldM);crown.position.set(0,3.4+TH+.3,-2);root.add(crown);
+  const crown2=new THREE.Mesh(new THREE.BoxGeometry(TW-4,1.6,TD-2),mStd(cream));crown2.position.set(0,3.4+TH+1.4,-2);root.add(crown2);
+  const sign=new THREE.Mesh(new THREE.PlaneGeometry(15,3.75),new THREE.MeshBasicMaterial({map:signTex('OPAL HOTEL','AMMAN'),transparent:true,depthWrite:false}));
+  sign.position.set(0,3.4+TH+3.4,-2+(TD-2)/2+.4);sign.renderOrder=5;root.add(sign);
+  const signB=sign.clone();signB.rotation.y=Math.PI;signB.position.z=-2-(TD-2)/2-.4;root.add(signB);
+  const canopy=new THREE.Mesh(new THREE.BoxGeometry(8,.25,4),goldM);canopy.position.set(0,3.0,5.2);canopy.castShadow=true;root.add(canopy);
+  [-3.6,3.6].forEach(x=>{const p=new THREE.Mesh(new THREE.CylinderGeometry(.12,.12,3,12),goldM);p.position.set(x,1.5,6.9);root.add(p);});
+  const fountain=new THREE.Mesh(new THREE.CylinderGeometry(1.8,2,.5,32),mStd(0xE6DCCB));fountain.position.set(0,.35,10);root.add(fountain);
+  const water=new THREE.Mesh(new THREE.CylinderGeometry(1.6,1.6,.1,32),new THREE.MeshStandardMaterial({color:0x6fb6c9,emissive:0x2a7f95,emissiveIntensity:.8,roughness:.1}));water.position.set(0,.62,10);root.add(water);
+  const jets=[];for(let i=0;i<8;i++){const a=i/8*Math.PI*2;const j=new THREE.Mesh(new THREE.CylinderGeometry(.05,.12,1.6,8),new THREE.MeshBasicMaterial({color:0xbfe8f2,transparent:true,opacity:.6}));j.position.set(Math.cos(a)*1.1,1.4,10+Math.sin(a)*1.1);root.add(j);jets.push(j);}
+  const archM=mk(T.night.a,1.2),archS=mk(T.night.a2,1.2);
+  const hall=new THREE.Mesh(new THREE.BoxGeometry(12,6,9),[archS,archS,roofM,roofM,archM,archM]);
+  hall.position.set(-17.5,3.1,-1);hall.castShadow=true;hall.receiveShadow=true;root.add(hall);
+  const hallCap=new THREE.Mesh(new THREE.BoxGeometry(12.6,.4,9.6),goldM);hallCap.position.set(-17.5,6.3,-1);root.add(hallCap);
+  const dome=new THREE.Mesh(new THREE.SphereGeometry(2.6,32,16,0,Math.PI*2,0,Math.PI/2),goldM);dome.position.set(-17.5,6.5,-1);root.add(dome);
+  const bridge=new THREE.Mesh(new THREE.BoxGeometry(3,3,4),glass);bridge.position.set(-10.2,1.7,-1);root.add(bridge);
+  const spaM=mStd(0xE4D9C4);
+  const spa=new THREE.Mesh(new THREE.BoxGeometry(10,4,8),[spaM,spaM,roofM,roofM,glass,glass]);spa.position.set(16,2.1,-3);spa.castShadow=true;root.add(spa);
+  const spaCap=new THREE.Mesh(new THREE.BoxGeometry(10.4,.3,8.4),goldM);spaCap.position.set(16,4.25,-3);root.add(spaCap);
+  const pool=new THREE.Mesh(new THREE.BoxGeometry(8,.12,5),new THREE.MeshStandardMaterial({color:0x5fb3c6,emissive:0x1f7a8f,emissiveIntensity:.9,roughness:.08,metalness:.1}));pool.position.set(15,.26,7.5);root.add(pool);
+  const poolEdge=new THREE.Mesh(new THREE.BoxGeometry(8.8,.18,5.8),mStd(0xF3ECE0));poolEdge.position.set(15,.2,7.5);root.add(poolEdge);
+  const terr=new THREE.Mesh(new THREE.BoxGeometry(9,.3,5),mStd(0xC8B597));terr.position.set(-6,.3,-11);root.add(terr);
+  for(let i=0;i<4;i++){const u=new THREE.Mesh(new THREE.ConeGeometry(.9,.5,16),mStd(0xEDE3D0));u.position.set(-9+i*2,2,-11);root.add(u);const s=new THREE.Mesh(new THREE.CylinderGeometry(.05,.05,1.8,6),goldM);s.position.set(-9+i*2,1.1,-11);root.add(s);}
+  const trunk=mStd(0x5a4632),leaf=mStd(0x485342,{roughness:.9}),leaf2=mStd(0x5e6b4f,{roughness:.9});
+  function olive(x,z,s=1){const g=new THREE.Group();const t=new THREE.Mesh(new THREE.CylinderGeometry(.15*s,.22*s,1.4*s,6),trunk);t.position.y=.7*s;g.add(t);
+    const f=new THREE.Mesh(new THREE.IcosahedronGeometry(1.1*s,1),Math.random()<.5?leaf:leaf2);f.position.y=1.9*s;f.scale.y=.8;f.castShadow=true;g.add(f);g.position.set(x,.2,z);root.add(g);}
+  function palm(x,z){const g=new THREE.Group();const t=new THREE.Mesh(new THREE.CylinderGeometry(.12,.2,4.2,6),trunk);t.position.y=2.1;g.add(t);
+    for(let i=0;i<7;i++){const fr=new THREE.Mesh(new THREE.ConeGeometry(.35,2.4,4),leaf);fr.geometry.translate(0,1.2,0);fr.position.y=4.2;fr.rotation.z=Math.PI/2.6;fr.rotation.y=i/7*Math.PI*2;fr.castShadow=true;g.add(fr);}
+    g.position.set(x,.2,z);root.add(g);}
+  [[-20,9],[-14,11],[-12,6.5],[18,13],[11,13],[-24,-10],[22,-12],[8,-14],[-1,-17],[5,-19],[-15,-17],[24,3]].forEach(([x,z])=>olive(x,z,.9+Math.random()*.4));
+  [[-6,8],[6,8],[-8.5,12],[8.5,12],[20,8],[10,4]].forEach(([x,z])=>palm(x,z));
+  const lampM=new THREE.MeshBasicMaterial({color:0xffd18a});
+  for(let i=0;i<14;i++){const a=i/14*Math.PI*2;const l=new THREE.Mesh(new THREE.SphereGeometry(.18,10,8),lampM);l.position.set(Math.cos(a)*27.5,1.4,Math.sin(a)*27.5);root.add(l);
+    const p=new THREE.Mesh(new THREE.CylinderGeometry(.04,.04,1.3,6),goldM);p.position.set(Math.cos(a)*27.5,.7,Math.sin(a)*27.5);root.add(p);}
+  const pl=new THREE.PointLight(0xffb866,1.6,26,2);pl.position.set(0,4,8);scene.add(pl);
+  const pl2=new THREE.PointLight(0xffc27a,1.2,22,2);pl2.position.set(-17,5,6);scene.add(pl2);
+  const sg=new THREE.BufferGeometry(),sp=[];for(let i=0;i<(MOBILE?150:500);i++){const r=150,th=Math.random()*Math.PI*2,ph=Math.random()*Math.PI*.42;sp.push(r*Math.sin(ph)*Math.cos(th),r*Math.cos(ph)+10,r*Math.sin(ph)*Math.sin(th));}
+  sg.setAttribute('position',new THREE.Float32BufferAttribute(sp,3));
+  scene.add(new THREE.Points(sg,new THREE.PointsMaterial({color:0xE9D4AA,size:.6,transparent:true,opacity:.7})));
+
+  // modes
+  function setMode(m){const t=T[m];
+    [[front,t.f],[side,t.s],[archM,t.a],[archS,t.a2]].forEach(([mat,tx])=>{mat.map=tx.map;mat.emissiveMap=tx.emissiveMap;mat.emissiveIntensity=m==='status'?1.05:(mat===archM||mat===archS?1.2:1.6);mat.needsUpdate=true;});
+    document.getElementById('twinLegend').classList.toggle('on',m==='status');
+    spots[2].el.querySelector('span').textContent=m==='status'?'52 جاهزة · 17 تنظيف · 2 صيانة':'81 غرفة وجناح';
+    spots[0].el.querySelector('span').textContent=m==='status'?'Imperial · عرس الليلة 8:00 م':'قاعة Imperial للأفراح';}
+  document.querySelectorAll('.mode').forEach(b=>b.onclick=()=>{document.querySelectorAll('.mode').forEach(x=>x.setAttribute('aria-pressed',x===b));setMode(b.dataset.m);});
+
+  const spots=[{p:[-17.5,9.6,-1],t:'قاعة Imperial للأفراح'},{p:[16,5,-3],t:'Aqua Spa والمسابح'},{p:[0,25,-2],t:'81 غرفة وجناح'},{p:[-6,3.2,-11],t:'بيت الكرم · تحت النجوم'}]
+    .map(s=>{const d=document.createElement('div');d.className='hotspot';d.innerHTML='<span>'+s.t+'</span>';document.getElementById('hotspots').appendChild(d);return {v:new THREE.Vector3(...s.p),el:d};});
+
+  let ang=.42,tilt=.30,dist=90,drag=false,lx=0,vel=0,idle=0;
+  canvas.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;canvas.setPointerCapture(e.pointerId);vel=0;});
+  canvas.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lx;lx=e.clientX;vel=-dx*.006;ang+=vel;idle=0;});
+  addEventListener('pointerup',()=>drag=false);
+  function resize(){const r=canvas.parentElement.getBoundingClientRect();renderer.setSize(r.width,r.height,false);cam.aspect=r.width/r.height;dist=r.width<560?135:90;cam.updateProjectionMatrix();}
+  onWidth(resize);resize();
+  const v=new THREE.Vector3(),camDir=new THREE.Vector3(),tgt=new THREE.Vector3(0,6,0);
+  let t0=performance.now(),visible=true;new IntersectionObserver(es=>visible=es[0].isIntersecting).observe(canvas);
+  function frame(now){requestAnimationFrame(frame);if(!visible)return;const dt=Math.min(.05,(now-t0)/1000);t0=now;
+    if(!drag){idle+=dt;vel*=.94;ang+=vel;if(!reduce&&idle>1.2)ang+=dt*.09;}
+    cam.position.set(Math.sin(ang)*dist*Math.cos(tilt),tgt.y+Math.sin(tilt)*dist,Math.cos(ang)*dist*Math.cos(tilt));cam.lookAt(tgt);
+    jets.forEach((j,i)=>j.scale.y=.8+Math.sin(now/300+i)*.25);
+    renderer.render(scene,cam);
+    const w=canvas.clientWidth,h=canvas.clientHeight;cam.getWorldDirection(camDir);
+    spots.forEach(s=>{v.copy(s.v).project(cam);const toP=s.v.clone().sub(cam.position).normalize();
+      const sideDot=s.v.clone().setY(0).normalize().dot(cam.position.clone().setY(0).normalize());
+      s.el.style.left=((v.x+1)/2*w)+'px';s.el.style.top=((1-v.y)/2*h)+'px';s.el.style.opacity=(toP.dot(camDir)>0&&sideDot>-.6)?1:0;});}
+  requestAnimationFrame(frame);
+}
+
+/* ---------------- 3D wedding hall ---------------- */
+let hall3d=null;
+function initHall(){
+  const cv=document.getElementById('hall3d');let r;
+  try{r=new THREE.WebGLRenderer({canvas:cv,antialias:!MOBILE,powerPreference:'low-power'});}catch(e){cv.style.display='none';return;}
+  r.setPixelRatio(DPR);r.outputEncoding=THREE.sRGBEncoding;r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=.95;
+  const sc=new THREE.Scene();sc.background=new THREE.Color(0x141517);
+  const cam=new THREE.PerspectiveCamera(38,2,.1,200);
+  sc.add(new THREE.HemisphereLight(0xfff0d8,0x222018,.7));
+  const key=new THREE.PointLight(0xffd59a,1.4,80,1.6);key.position.set(0,14,0);sc.add(key);
+  const floorM=new THREE.MeshStandardMaterial({color:0xD8CDB8,roughness:.35,metalness:.1});
+  const goldM=new THREE.MeshStandardMaterial({color:GOLD,metalness:.85,roughness:.3,emissive:0x3a2608,emissiveIntensity:.3});
+  const g=new THREE.Group();sc.add(g);
+  let dyn=new THREE.Group();g.add(dyn);
+  const L=40,Wd=26;
+  const floor=new THREE.Mesh(new THREE.BoxGeometry(Wd,.3,L),floorM);floor.position.y=-.15;g.add(floor);
+  const wallM=new THREE.MeshStandardMaterial({color:0xEFE6D6,roughness:.7,side:THREE.BackSide});
+  const walls=new THREE.Mesh(new THREE.BoxGeometry(Wd,8,L),wallM);walls.position.y=4;g.add(walls);
+  // runway like Imperial
+  const run=new THREE.Mesh(new THREE.BoxGeometry(3,.12,L*.62),new THREE.MeshStandardMaterial({color:0x2a4fb8,emissive:0x2b5be0,emissiveIntensity:.9,roughness:.1}));run.position.set(0,.06,-1);g.add(run);
+  [-1.7,1.7].forEach(x=>{for(let i=0;i<9;i++){const p=new THREE.Mesh(new THREE.CylinderGeometry(.12,.12,1.2,10),goldM);p.position.set(x,.6,-12+i*2.8);g.add(p);}});
+  // stage + kosha
+  const stage=new THREE.Mesh(new THREE.BoxGeometry(12,1,5),new THREE.MeshStandardMaterial({color:0xF3ECE0,roughness:.4}));stage.position.set(0,.5,-L/2+3);g.add(stage);
+  const back=new THREE.Mesh(new THREE.BoxGeometry(12,6,.3),new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xd9b77a,emissiveIntensity:.35}));back.position.set(0,4,-L/2+.8);g.add(back);
+  const arch=new THREE.Mesh(new THREE.TorusGeometry(3.4,.18,10,40,Math.PI),goldM);arch.position.set(0,4.2,-L/2+1.2);g.add(arch);
+  const sofa=new THREE.Mesh(new THREE.BoxGeometry(3,1,1),new THREE.MeshStandardMaterial({color:0xffffff}));sofa.position.set(0,1.5,-L/2+2.5);g.add(sofa);
+  // chandeliers
+  for(let i=0;i<3;i++)for(let k=0;k<2;k++){const c=new THREE.Mesh(new THREE.SphereGeometry(.7,16,12),new THREE.MeshBasicMaterial({color:0xffe1a8}));c.position.set(-6+k*12,7,-10+i*10);g.add(c);const pl=new THREE.PointLight(0xffd59a,.35,16,2);pl.position.copy(c.position);g.add(pl);}
+  const clothM=new THREE.MeshStandardMaterial({color:0xffffff,roughness:.6}),chairM=new THREE.MeshStandardMaterial({color:GOLD,metalness:.6,roughness:.4}),flowerM=new THREE.MeshStandardMaterial({color:0xE8C8D0});
+  const tGeo=new THREE.CylinderGeometry(1.1,1.1,.9,24),cGeo=new THREE.BoxGeometry(.35,.7,.35),fGeo=new THREE.SphereGeometry(.3,10,8);
+  function build(nTables,scale){
+    g.remove(dyn);dyn=new THREE.Group();g.add(dyn);
+    const slots=[];for(let z=-L/2+8;z<=L/2-3;z+=3.1){for(let x=2.8;x<=Wd/2-1.6;x+=3.1){slots.push([x,z]);slots.push([-x,z]);}}
+    slots.sort((a,b)=>(a[1]-b[1])||(Math.abs(a[0])-Math.abs(b[0])));
+    for(let i=0;i<Math.min(nTables,slots.length);i++){const [x,z]=slots[i];
+      const t=new THREE.Mesh(tGeo,clothM);t.position.set(x,.45,z);dyn.add(t);
+      const f=new THREE.Mesh(fGeo,flowerM);f.position.set(x,1.1,z);dyn.add(f);
+      for(let c=0;c<8;c++){const a=c/8*Math.PI*2;const ch=new THREE.Mesh(cGeo,chairM);ch.position.set(x+Math.cos(a)*1.4,.35,z+Math.sin(a)*1.4);dyn.add(ch);}}
+    g.scale.setScalar(scale);
+    return Math.min(nTables,slots.length);
+  }
+  let ang=.6,drag=false,lx=0,vis=true;
+  cv.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;cv.setPointerCapture(e.pointerId);});
+  cv.addEventListener('pointermove',e=>{if(drag){ang-=(e.clientX-lx)*.008;lx=e.clientX;}});
+  addEventListener('pointerup',()=>drag=false);
+  new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(cv);
+  let sw=0,sh=0;function size(){const w=cv.clientWidth,h=cv.clientHeight;if(!w||(w===sw&&h===sh))return;sw=w;sh=h;r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();}
+  let last=performance.now();
+  (function loop(t){requestAnimationFrame(loop);if(!vis||!cv.clientWidth)return;size();const dt=Math.min(.05,(t-last)/1000);last=t;if(!drag&&!reduce)ang+=dt*.12;
+    const d=31;cam.position.set(Math.sin(ang)*d,17,Math.cos(ang)*d);cam.lookAt(0,0,0);r.render(sc,cam);})(last);
+  hall3d={build};
+}
+function lazy(el,fn){const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){io.disconnect();fn();}},{rootMargin:'300px'});io.observe(el);}
+if(window.THREE){lazy(document.getElementById('scene'),()=>{try{initScene();}catch(e){document.getElementById('fallback').style.display='grid';}});
+  lazy(document.getElementById('preview'),()=>{try{initHall();est();}catch(e){}});}
+else document.getElementById('fallback').style.display='grid';
+
+/* ---------------- tabs ---------------- */
+const tabs=[...document.querySelectorAll('.tab')];
+tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>{x.setAttribute('aria-selected',x===t);document.getElementById(x.getAttribute('aria-controls')).classList.toggle('on',x===t);});}));
+
+/* ---------------- booking ---------------- */
+const ROOMS=[{n:'Deluxe Room',d:'سرير كينغ · شرفة على الحديقة',p:75,pos:'30% 50%'},{n:'Twin Room',d:'سريران · إطلالة حديقة',p:80,pos:'75% 60%'},{n:'Family Suite',d:'75 م² · غرفتا نوم · 4 ضيوف',p:135,pos:'55% 40%'}];
+const roomsEl=document.getElementById('rooms');let selRoom=0;
+const nights=()=>{const a=new Date(document.getElementById('bIn').value),b=new Date(document.getElementById('bOut').value);return Math.max(1,Math.round((b-a)/864e5)||1);};
+function renderRooms(){roomsEl.innerHTML=ROOMS.map((r,i)=>`<div class="room${i===selRoom?' sel':''}"><div class="ph" style="background-image:url(img/room.jpg);background-position:${r.pos};background-size:180%"></div><div class="rb"><b class="latin" style="font-family:var(--f-brand)">${r.n}</b><span class="mute">${r.d}</span><div class="pr"><strong class="tnum">${r.p} د.أ</strong><button type="button" class="btn ${i===selRoom?'':'ghost'}" data-i="${i}" style="padding:5px 12px;font-size:12px">${i===selRoom?'مختارة':'اختر'}</button></div></div></div>`).join('');
+  roomsEl.querySelectorAll('button').forEach(b=>b.onclick=()=>{selRoom=+b.dataset.i;renderRooms();renderConfirm();});}
+function renderConfirm(){const r=ROOMS[selRoom],n=nights(),tot=r.p*n;
+  const qr=Array.from({length:49},(_,i)=>`<i style="aspect-ratio:1;display:block;background:${(i*7919%5<2||[0,1,7,8,5,6,12,13,35,36,42,43].includes(i))?'#1D1E20':'transparent'}"></i>`).join('');
+  document.getElementById('confirm').innerHTML=`<div class="notch"><i></i></div>
+  <div class="ph" style="height:110px;background-image:url(img/facade-night.jpg)"></div>
+  <div style="padding:14px 18px;display:grid;gap:10px">
+   <div class="site-logo" style="font-size:14px"><img src="img/opal-logo.png" alt="" style="height:20px">OPAL HOTEL</div>
+   <div style="font:700 21px var(--f-display)">تمّ تأكيد حجزك ✓</div>
+   <div style="background:#fff;border:1px solid #eadfcb;border-radius:10px;padding:10px 12px;display:grid;font-size:12.5px">
+     <div class="row"><span class="mute">الغرفة</span><b class="latin" style="font-family:var(--f-brand)">${r.n}</b></div>
+     <div class="row"><span class="mute">الليالي</span><b class="tnum">${n}</b></div>
+     <div class="row"><span class="mute">الضيوف</span><b>${document.getElementById('bG').value}</b></div>
+     <div class="row"><span class="mute">الإجمالي</span><b class="tnum" style="color:var(--gold)">${tot} د.أ</b></div>
+   </div>
+   <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;width:84px;justify-self:center;padding:7px;background:#fff;border-radius:8px">${qr}</div>
+   <button class="btn" type="button" style="width:100%">+ أضف جلسة في Aqua Spa</button>
+   <button class="btn ghost" type="button" style="width:100%">احجز توصيل المطار · 25 د.أ</button>
+  </div>`;}
+document.getElementById('bookForm').addEventListener('submit',e=>{e.preventDefault();renderRooms();renderConfirm();});
+['bIn','bOut','bG'].forEach(id=>document.getElementById(id).addEventListener('change',renderConfirm));
+renderRooms();renderConfirm();
+
+/* ---------------- wedding planner ---------------- */
+const HALLS=[['IMPERIAL','door-imperial',1.25,1],['MASSAYA','door-massaya',1,.85],['PALACE','door-palace',1.1,.92],['OPERA & PETRA','door-opera',.9,.8]];
+let hall=0,month=new Date(2026,11,1),picked=null;
+const hp=document.getElementById('hallsPick');
+hp.innerHTML=HALLS.map((h,i)=>`<button type="button" class="hall" aria-pressed="${i===0}" data-i="${i}" style="background-image:url(img/${h[1]}.jpg)"><span>${h[0]}</span></button>`).join('');
+hp.querySelectorAll('.hall').forEach(b=>b.onclick=()=>{hall=+b.dataset.i;picked=null;hp.querySelectorAll('.hall').forEach(x=>x.setAttribute('aria-pressed',x===b));renderCal();est();});
+const AR_M=['كانون الثاني','شباط','آذار','نيسان','أيار','حزيران','تموز','آب','أيلول','تشرين الأول','تشرين الثاني','كانون الأول'];
+function status(d){const s=(d.getDate()*31+d.getMonth()*17+hall*13)%11;const dow=d.getDay();if((dow===4||dow===5)&&s<6)return 'busy';if(s===3||s===7)return 'hold';if(s===9)return 'busy';return '';}
+function renderCal(){const y=month.getFullYear(),m=month.getMonth();document.getElementById('calTitle').textContent=AR_M[m]+' '+y;
+  const first=new Date(y,m,1).getDay(),n=new Date(y,m+1,0).getDate();
+  let h=['أحد','إثن','ثلا','أرب','خمي','جمع','سبت'].map(x=>`<span class="dn">${x}</span>`).join('');
+  for(let i=0;i<first;i++)h+='<span></span>';
+  for(let d=1;d<=n;d++){const dt=new Date(y,m,d),st=status(dt),pk=picked&&+picked===+dt;h+=`<button type="button" class="d ${pk?'pick':st}" ${st==='busy'?'disabled':''} data-d="${d}">${d}</button>`;}
+  const el=document.getElementById('days');el.innerHTML=h;
+  el.querySelectorAll('.d:not([disabled])').forEach(b=>b.onclick=()=>{picked=new Date(y,m,+b.dataset.d);renderCal();est();});}
+document.getElementById('calPrev').onclick=()=>{month=new Date(month.getFullYear(),month.getMonth()-1,1);renderCal();};
+document.getElementById('calNext').onclick=()=>{month=new Date(month.getFullYear(),month.getMonth()+1,1);renderCal();};
+function est(){const g=+document.getElementById('guests').value;document.getElementById('gOut').textContent=g;
+  const pp=+document.getElementById('pkg').value;let x=0;document.querySelectorAll('#xtras input:checked').forEach(c=>x+=+c.value);
+  const tot=Math.round((g*pp*HALLS[hall][2]+x)/10)*10;
+  document.getElementById('estV').textContent=tot.toLocaleString('en-US')+' د.أ';
+  document.getElementById('estSub').textContent='قاعة '+HALLS[hall][0]+' · '+(picked?picked.getDate()+' '+AR_M[picked.getMonth()]+' '+picked.getFullYear():'اختر تاريخًا من التقويم');
+  const nT=Math.ceil(g/10);let shown=nT;if(hall3d)shown=hall3d.build(nT,HALLS[hall][3]);
+  document.getElementById('tOut').textContent=shown+' طاولة';}
+['guests','pkg'].forEach(id=>document.getElementById(id).addEventListener('input',est));
+document.querySelectorAll('#xtras input').forEach(c=>c.addEventListener('change',est));
+document.getElementById('holdBtn').onclick=()=>{const s=document.getElementById('estSub');if(!picked){s.textContent='اختر تاريخًا متاحًا أولًا';return;}s.textContent='✓ التاريخ محجوز مبدئيًا لكم 72 ساعة · وصلت رسالة واتساب';};
+renderCal();est();
+
+/* ---------------- spa ---------------- */
+const SVC={m:[['الحمّام التركي','60 د',35,'hammam'],['الحمّام المغربي','75 د',40,'hammam2'],['مساج الجسم الكامل','60 د',45,'spa-room'],['الجاكوزي والساونا','45 د',20,'jacuzzi']],
+           w:[['الحمّام المغربي','75 د',40,'hammam2'],['مساج وعناية','60 د',45,'spa-towels'],['صالون: منيكير وبديكير','60 د',30,'spa-lounge'],['قسم السيدات الخاص','90 د',55,'spa-hall']]};
+let sec='m',svc=0,slot=null;
+function renderSpa(){const svcEl=document.getElementById('svc');svcEl.innerHTML=SVC[sec].map((s,i)=>`<button type="button" aria-pressed="${i===svc}" data-i="${i}"><div class="ph" style="background-image:url(img/${s[3]}.jpg)"></div><span><b>${s[0]}</b><span class="mute">${s[1]} · ${s[2]} د.أ</span></span></button>`).join('');
+  svcEl.querySelectorAll('button').forEach(b=>b.onclick=()=>{svc=+b.dataset.i;renderSpa();});
+  const times=['10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00'];
+  const sl=document.getElementById('slots');sl.innerHTML=times.map((t,i)=>{const off=((i+svc*3+(sec==='w'?2:0))%5)===1;return `<button type="button" class="slot" ${off?'disabled':''} aria-pressed="${slot===t}" data-t="${t}">${t}</button>`}).join('');
+  sl.querySelectorAll('.slot:not([disabled])').forEach(b=>b.onclick=()=>{slot=b.dataset.t;renderSpa();});
+  const s=SVC[sec][svc];document.getElementById('spaV').textContent=s[2]+' د.أ';document.getElementById('spaSub').textContent=s[0]+(slot?' · الخميس '+slot:' · اختر وقتًا');}
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{sec=b.dataset.sec;svc=0;slot=null;document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));renderSpa();});
+document.getElementById('spaBtn').onclick=()=>{document.getElementById('spaSub').textContent=slot?'✓ تم الحجز · تذكير واتساب قبل ساعتين':'اختر وقتًا متاحًا أولًا';};
+renderSpa();
+
+/* ---------------- dining ---------------- */
+let area='in',table=null;
+function renderTables(){const seed={in:3,out:5,cafe:7}[area];const el=document.getElementById('tables');
+  el.innerHTML=Array.from({length:16},(_,i)=>{const taken=((i*seed)%7)<3;const n=i+1;return `<button type="button" class="tb ${taken?'t':''} ${table===n?'r':''}" ${taken?'disabled':''} data-n="${n}" aria-label="طاولة ${n}">${n}</button>`}).join('');
+  el.querySelectorAll('.tb:not([disabled])').forEach(b=>b.onclick=()=>{table=+b.dataset.n;renderTables();});
+  document.getElementById('tSub').textContent=table?('طاولة '+table+' · '+{in:'القاعة الداخلية',out:'تحت النجوم',cafe:'ماتشو بيتشو'}[area]+' · 4 أشخاص'):'اختر طاولة من المخطط';}
+document.querySelectorAll('.area').forEach(b=>b.onclick=()=>{area=b.dataset.a;table=null;document.querySelectorAll('.area').forEach(x=>x.classList.toggle('on',x===b));renderTables();});
+renderTables();
+const MENU=[['مشاوي مشكّلة','كباب، شيش طاووق، لحم',12.5,'food-spread'],['كبّة مقلية','مع لبن ورمان',6,'kibbeh'],['طبق الشيف','من مطبخ بيت الكرم',7.5,'dish'],['حلويات لبنانية','تشكيلة بالفستق',5.5,'sweets'],['ساندويش ماتشو','من كافيه ماتشو بيتشو',6.5,'burger']];
+let cart=0;document.getElementById('menu').innerHTML=MENU.map(m=>`<div class="mi"><div class="ph" style="background-image:url(img/${m[3]}.jpg)"></div><b>${m[0]}</b><button type="button" data-p="${m[2]}" aria-label="أضف ${m[0]}">+</button><span class="mute">${m[1]} · <span class="p tnum">${m[2].toFixed(2)}</span></span></div>`).join('');
+document.querySelectorAll('#menu button').forEach(b=>b.onclick=()=>{cart+=+b.dataset.p;document.getElementById('cart').textContent=cart.toFixed(2)+' د.أ';});
+
+/* ---------------- occupancy chart ---------------- */
+(function(){const d=[61,64,58,70,82,88,74,66,69,72,85,91,80,78];const svg=document.getElementById('occ');const W=420,H=150,P=34;
+  const x=i=>P+i*(W-2*P)/(d.length-1),y=v=>H-20-(v-40)/(100-40)*(H-40);
+  let s='';[50,70,90].forEach(v=>{s+=`<line x1="${P}" x2="${W-P}" y1="${y(v)}" y2="${y(v)}" stroke="#eee"/><text x="2" y="${y(v)+4}" font-size="10" fill="#999" font-family="DM Sans">${v}%</text>`;});
+  const pts=d.map((v,i)=>x(i)+','+y(v)).join(' ');
+  s+=`<polygon points="${x(0)},${H-20} ${pts} ${x(d.length-1)},${H-20}" fill="rgba(187,139,65,.15)"/><polyline points="${pts}" fill="none" stroke="#BB8B41" stroke-width="2.2"/>`;
+  d.forEach((v,i)=>{if(i===d.length-1||v===91)s+=`<circle cx="${x(i)}" cy="${y(v)}" r="4" fill="#BB8B41"/><text x="${x(i)}" y="${y(v)-9}" text-anchor="middle" font-size="11" font-weight="700" fill="#1D1E20" font-family="DM Sans">${v}%</text>`;});
+  s+=`<text x="${P}" y="${H-4}" font-size="10" fill="#999">قبل 14 يومًا</text><text x="${W-P}" y="${H-4}" text-anchor="end" font-size="10" fill="#999">اليوم</text>`;
+  svg.innerHTML=s;})();
+
+document.getElementById('ctaBtn').onclick=()=>{document.getElementById('ctaMsg').textContent='يسعدنا ذلك. يتواصل فريق ELEVATE مع الإدارة لتثبيت الموعد المناسب لكم.';};
+})();
+</script>
+</body>
+</html>
