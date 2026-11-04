@@ -156,6 +156,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 .twin-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-inline-end:6px;vertical-align:-1px}
 .twin-copy{display:grid;gap:18px}
 .twin-copy h2{font-size:clamp(32px,4vw,50px)}
+.twin-copy h2 em{font-style:normal}
 .twin-copy ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
 .twin-copy li{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:15.5px;color:#CBC4B7}
 .twin-copy li::before{content:"◆";color:var(--gold);font-size:10px;padding-top:6px}
@@ -399,6 +400,41 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
   .phone{width:100%;max-width:262px}
   .film-grid{gap:24px}
 }
+
+/* ---------- v4 polish ---------- */
+.eyebrow .idx{font:500 12px var(--f-latin);letter-spacing:.14em;color:var(--gold-soft);border:1px solid var(--line);border-radius:999px;padding:1px 9px;margin-inline-end:2px}
+.dark .eyebrow .idx{color:var(--gold-soft)}
+.eyebrow::before{order:2}
+.hero h1 em,.twin-copy h2 em{background:linear-gradient(100deg,#E9C98E 0%,#BB8B41 45%,#F1DCAE 70%,#BB8B41 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .shade{background:linear-gradient(270deg,rgba(15,15,16,.94) 0%,rgba(15,15,16,.78) 40%,rgba(15,15,16,.25) 100%),linear-gradient(0deg,rgba(15,15,16,.95),transparent 45%)}
+.hero h1{text-shadow:0 2px 30px rgba(0,0,0,.45)}
+.hero .lead{color:#E2DCCF}
+.dark,.twin{position:relative;isolation:isolate}
+.dark::after,.twin::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:url(img/opal-logo.png) no-repeat 6% 12%/180px auto;opacity:.035}
+.sec-head h2{letter-spacing:0}
+.tile,.door,.mod,.venue,.imp,.film,.browser{border-radius:8px}
+.tile{box-shadow:0 30px 50px -35px rgba(0,0,0,.55)}
+.gap{transition:background .3s}
+.gap:hover{background:rgba(187,139,65,.05)}
+.fact .n{background:linear-gradient(180deg,#D9B77A,#9C7232);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{box-shadow:0 10px 24px -12px rgba(187,139,65,.8)}
+.btn.ghost{box-shadow:none}
+.cover-card{border-color:rgba(217,183,122,.45)}
+.pair .nm{color:#EFE3C9}
+@media (max-width:760px){
+  .hero{min-height:auto}
+  .hero .shade{background:linear-gradient(180deg,rgba(15,15,16,.55) 0%,rgba(15,15,16,.35) 25%,rgba(15,15,16,.82) 58%,rgba(15,15,16,.97) 100%)}
+  .hero-in{padding:110px 0 44px;gap:26px}
+  .hero h1{font-size:44px}
+  .hero .lead{font-size:17px}
+  .hero-meta{font-size:13.5px;gap:8px 18px}
+  .cover-card{padding:16px 18px;background:rgba(20,21,23,.78)}
+  .cover-card img{height:38px}
+  .pair img{height:34px}
+  .sec-head h2{font-size:32px}
+  .fact .n{font-size:38px}
+  .dark::after,.twin::after{background-size:120px auto;background-position:90% 4%}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -406,17 +442,18 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 
 <!-- ================= COVER ================= -->
 <header class="hero" id="top">
-  <video id="heroVid" poster="media/film-poster.jpg" autoplay muted loop playsinline></video>
+  <video id="heroVid" autoplay muted loop playsinline preload="auto"></video>
+  <script>(function(){var m=matchMedia("(max-width:760px)").matches,v=document.getElementById("heroVid");v.poster=m?"media/hero-poster.jpg":"media/film-poster.jpg";v.src=m?"media/hero-portrait.mp4":"media/opal-film.mp4";})();</script>
   <div class="shade"></div>
   <div class="topbar"><div class="wrap">
-    <div class="pair"><img src="img/elevate-logo.png" alt="شعار ELEVATE"><span class="nm">ELEVATE</span><span class="x">×</span><img src="img/opal-logo.png" alt="شعار فندق أوبال"><span class="op">OPAL HOTEL</span></div>
+    <div class="pair"><img src="img/elevate-gold.png" alt="شعار ELEVATE"><span class="nm">ELEVATE</span><span class="x">×</span><img src="img/opal-logo.png" alt="شعار فندق أوبال"><span class="op">OPAL HOTEL</span></div>
     <div class="tag">عرض فني وتجاري · تشرين الثاني 2026</div>
   </div></div>
   <div class="wrap hero-in">
     <div class="hero-copy">
       <span class="eyebrow">مقدَّم إلى إدارة فندق أوبال عمّان</span>
       <h1>كل ضيافة أوبال<br>في <em>منظومة واحدة</em></h1>
-      <p class="lead">تقترح <span class="latin" style="font-weight:700;letter-spacing:.14em">ELEVATE</span> بناء <span class="brand gold">OPAL ONE</span>: منصة رقمية بهوية أوبال نفسها، تجمع حجز الغرف، قاعات الأفراح الأربع، Aqua Spa، بيت الكرم وكافيه ماتشو بيتشو، ولوحة إدارة الفندق كاملة في مكان واحد.</p>
+      <p class="lead">منصة <bdi class="brand gold">OPAL ONE</bdi> منظومة رقمية بهوية أوبال نفسها، تجمع حجز الغرف، وقاعات الأفراح الأربع، و<bdi>Aqua Spa</bdi>، وبيت الكرم، وكافيه ماتشو بيتشو، ولوحة إدارة الفندق في مكان واحد.</p>
       <div class="hero-meta">
         <span><b>81</b> غرفة وجناح</span>
         <span><b>4</b> قاعات مناسبات</span>
@@ -425,7 +462,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
       </div>
     </div>
     <aside class="cover-card">
-      <div class="row2"><img src="img/elevate-logo.png" alt=""><div><small>مقدَّم من</small><br><b class="latin">ELEVATE</b></div></div>
+      <div class="row2"><img src="img/elevate-gold.png" alt=""><div><small>مقدَّم من</small><br><b class="latin">ELEVATE</b></div></div>
       <p>شريككم التقني لبناء منظومة أوبال الرقمية، من التصميم حتى التشغيل والدعم.</p>
       <a class="play" href="#film"><i></i>شاهد فيلم أوبال</a>
     </aside>
@@ -436,7 +473,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 <section id="opal">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">ما فهمناه عن أوبال</span>
+      <span class="eyebrow"><b class="idx">01</b>ما فهمناه عن أوبال</span>
       <h2>فندق بأربعة عوالم تحت سقف واحد</h2>
       <p class="mute">أوبال ليس غرفًا فقط. هو وجهة أفراح، ومطعم لبناني، وسبا متكامل، وكافيه بطابع الإنكا. كل عالم منها يحتاج تجربة حجز وتشغيل خاصة به، وكلها يجب أن تتكلم مع بعضها.</p>
     </div>
@@ -454,28 +491,28 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
     <p class="hint">صور أوبال الرسمية · اسحب لتدوير المعرض</p>
 
     <div class="bento">
-      <article class="tile t-a tilt ph" style="background-image:url(img/imperial-hall.jpg)">
+      <article class="tile t-a tilt ph" style="background-image:url(img/imperial-hall.webp)">
         <h3>قاعات الأفراح والمناسبات</h3>
         <p>قاعة Imperial بأسقفها العالية وثرياتها وممرّها المضيء، إلى جانب Massaya وPalace وOpera &amp; Petra.</p>
         <div class="chips"><span class="chip">أعراس</span><span class="chip">خطوبات</span><span class="chip">مؤتمرات</span><span class="chip">5 قاعات اجتماعات</span></div>
       </article>
-      <article class="tile t-b tilt ph" style="background-image:url(img/karam-night.jpg)">
+      <article class="tile t-b tilt ph" style="background-image:url(img/karam-night.webp)">
         <h3>بيت الكرم</h3>
         <p>مطبخ لبناني بمشاوي وكبّة وحلويات، جلسات داخلية وتحت النجوم.</p>
       </article>
-      <article class="tile t-c tilt ph" style="background-image:url(img/hammam.jpg)">
+      <article class="tile t-c tilt ph" style="background-image:url(img/hammam.webp)">
         <h3>Aqua Spa</h3>
         <p>حمّام تركي ومغربي، مساج، جاكوزي، وصالون سيدات.</p>
       </article>
-      <article class="tile tilt ph" style="background-image:url(img/cafe-mural.jpg)">
+      <article class="tile tilt ph" style="background-image:url(img/cafe-mural.webp)">
         <h3>ماتشو بيتشو</h3>
         <p>كافيه بطابع الإنكا وتراس مشمس.</p>
       </article>
-      <article class="tile t-b tilt ph" style="background-image:url(img/room.jpg)">
+      <article class="tile t-b tilt ph" style="background-image:url(img/room.webp)">
         <h3>الغرف والأجنحة</h3>
         <p>من Deluxe وTwin حتى Family Suite وFamily Apartment، بإطلالات على الحديقة.</p>
       </article>
-      <article class="tile tilt ph" style="background-image:url(img/food-spread.jpg)">
+      <article class="tile tilt ph" style="background-image:url(img/food-spread.webp)">
         <h3>خدمة الغرف 24 ساعة</h3>
         <p>من مطبخ بيت الكرم إلى الغرفة.</p>
       </article>
@@ -487,15 +524,15 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 <section class="dark" id="halls">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">القاعات الأربع</span>
+      <span class="eyebrow"><b class="idx">02</b>القاعات الأربع</span>
       <h2>كل قاعة لها بابها، ولها صفحتها في النظام</h2>
       <p class="mute">لكل قاعة في OPAL ONE تقويم توفّر، وسعة، وباقات، وصور، ومنسّق مسؤول. العروسان يبدآن من هنا قبل أي مكالمة.</p>
     </div>
     <div class="halls4">
-      <div class="door tilt ph" style="background-image:url(img/door-imperial.jpg)"><span><b>IMPERIAL</b><small>القاعة الكبرى للأعراس الفاخرة</small></span></div>
-      <div class="door tilt ph" style="background-image:url(img/door-massaya.jpg)"><span><b>MASSAYA</b><small>للخطوبات والحفلات المتوسطة</small></span></div>
-      <div class="door tilt ph" style="background-image:url(img/door-palace.jpg)"><span><b>PALACE</b><small>للمناسبات والعشاءات الخاصة</small></span></div>
-      <div class="door tilt ph" style="background-image:url(img/door-opera.jpg)"><span><b>OPERA &amp; PETRA</b><small>للمؤتمرات وورش العمل</small></span></div>
+      <div class="door tilt ph" style="background-image:url(img/door-imperial.webp)"><span><b>IMPERIAL</b><small>القاعة الكبرى للأعراس الفاخرة</small></span></div>
+      <div class="door tilt ph" style="background-image:url(img/door-massaya.webp)"><span><b>MASSAYA</b><small>للخطوبات والحفلات المتوسطة</small></span></div>
+      <div class="door tilt ph" style="background-image:url(img/door-palace.webp)"><span><b>PALACE</b><small>للمناسبات والعشاءات الخاصة</small></span></div>
+      <div class="door tilt ph" style="background-image:url(img/door-opera.webp)"><span><b>OPERA &amp; PETRA</b><small>للمؤتمرات وورش العمل</small></span></div>
     </div>
   </div>
 </section>
@@ -504,7 +541,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 <section class="dark" id="gaps" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">الفرص التي رصدناها</span>
+      <span class="eyebrow"><b class="idx">03</b>الفرص التي رصدناها</span>
       <h2>ضيافة بخمس نجوم، ورحلة رقمية متفرّقة</h2>
       <p class="mute">راجعنا موقع أوبال الحالي، قنوات الحجز، وصفحات التواصل. الخدمة داخل الفندق ممتازة، لكن الطريق إليها رقميًا يمرّ عبر عدة أبواب منفصلة.</p>
     </div>
@@ -521,14 +558,14 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 <section class="twin" id="twin">
   <div class="wrap twin-grid">
     <div class="twin-copy">
-      <span class="eyebrow">التوأم الرقمي</span>
-      <h2>أوبال كاملًا، على شاشة واحدة، بشكل ثلاثي الأبعاد</h2>
+      <span class="eyebrow"><b class="idx">04</b>التوأم الرقمي</span>
+      <h2>أوبال كاملًا، على شاشة واحدة، <em>بشكل ثلاثي الأبعاد</em></h2>
       <p class="mute">مجسّم الفندق داخل لوحة الإدارة ليس للزينة. كل نافذة فيه غرفة حقيقية، ولونها يتغيّر حسب حالتها لحظة بلحظة. المدير يرى الفندق كله بنظرة.</p>
       <div class="modes" role="group" aria-label="طريقة العرض">
         <button type="button" class="mode" aria-pressed="true" data-m="night">العرض الليلي</button>
         <button type="button" class="mode" aria-pressed="false" data-m="status">حالة الغرف الآن</button>
       </div>
-      <div class="twin-legend" id="twinLegend"><span><i style="background:#4FB06B"></i>جاهزة</span><span><i style="background:#E9A23B"></i>قيد التنظيف</span><span><i style="background:#D9534F"></i>صيانة</span><span><i style="background:#6B8FD6"></i>مشغولة</span></div>
+      <div class="twin-legend" id="twinLegend"><span><i style="background:#8DB36E"></i>جاهزة</span><span><i style="background:#D9A441"></i>قيد التنظيف</span><span><i style="background:#C2553F"></i>صيانة</span><span><i style="background:#8C9BB5"></i>مشغولة</span></div>
       <ul>
         <li>اضغط على أي غرفة في النظام لترى الضيف والفاتورة وطلباته</li>
         <li>قاعة Imperial تضيء عندما يكون فيها حفل اليوم</li>
@@ -547,19 +584,19 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 <section id="system">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">المنظومة المقترحة</span>
+      <span class="eyebrow"><b class="idx">05</b>المنظومة المقترحة</span>
       <h2><span class="brand gold">OPAL ONE</span> ثمانية أجزاء، قاعدة بيانات واحدة</h2>
       <p class="mute">كل جزء يعمل وحده بكفاءة، والقوة الحقيقية أنها كلها مترابطة: ضيف حجز عرسه في Imperial يظهر عند الاستقبال وفي السبا وفي المطعم بملف واحد.</p>
     </div>
     <div class="mods">
-      <div class="mod"><div class="ph" style="background-image:url(img/facade-day.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></div></div><div class="body"><h3>الموقع ومحرّك الحجز</h3><p>موقع عربي وإنجليزي بهوية أوبال، والحجز يتمّ داخله.</p><ul><li>توفّر وأسعار لحظية</li><li>دفع إلكتروني آمن</li><li>عروض وأكواد خصم</li></ul></div></div>
-      <div class="mod"><div class="ph" style="background-image:url(img/stage.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.7 7.1 18.2 8 12.7 4 8.8 9.5 8z"/></svg></div></div><div class="body"><h3>استوديو الأفراح</h3><p>القاعة والتاريخ والباقة ومجسّم الجلسات، وتقدير سعر فوري.</p><ul><li>تقويم توفّر لكل قاعة</li><li>مجسّم ثلاثي الأبعاد للطاولات</li><li>دفعة عربون إلكترونية</li></ul></div></div>
-      <div class="mod"><div class="ph" style="background-image:url(img/spa-hall.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c-4-3-7-6-7-10a7 7 0 0114 0c0 4-3 7-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg></div></div><div class="body"><h3>حجوزات Aqua Spa</h3><p>الخدمة والمعالج والوقت، بأقسام منفصلة للرجال والسيدات.</p><ul><li>منع تعارض المواعيد</li><li>باقات سبا مع الإقامة</li><li>تذكير تلقائي</li></ul></div></div>
-      <div class="mod"><div class="ph" style="background-image:url(img/karam-in.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3v8a3 3 0 006 0V3M9 3v18M18 3c-2 0-3 3-3 7h3v11"/></svg></div></div><div class="body"><h3>المطاعم وخدمة الغرف</h3><p>طاولات بيت الكرم وماتشو بيتشو، منيو QR، وطلبات الغرف.</p><ul><li>داخلي وتراس تحت النجوم</li><li>منيو رقمي بالصور</li><li>طلبات تُرسل للمطبخ</li></ul></div></div>
-      <div class="mod"><div class="ph" style="background-image:url(img/room.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div></div><div class="body"><h3>بوابة الضيف</h3><p>تسجيل وصول مسبق، طلبات الغرفة، توصيل المطار، وفاتورة واضحة.</p><ul><li>Check-in إلكتروني</li><li>طلبات تنظيف وصيانة</li><li>محادثة مع الاستقبال</li></ul></div></div>
-      <div class="mod"><div class="ph" style="background-image:url(img/facade-night.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div></div><div class="body"><h3>لوحة الإدارة والتوأم الرقمي</h3><p>الإشغال والإيرادات والفعاليات، ومجسّم الفندق بحالة كل غرفة.</p><ul><li>تقارير يومية تلقائية</li><li>صلاحيات حسب القسم</li><li>حالة الغرف لحظيًا</li></ul></div></div>
-      <div class="mod"><div class="ph" style="background-image:url(img/cafe-wide.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 010 7"/></svg></div></div><div class="body"><h3>CRM وبرنامج الولاء</h3><p>ملف لكل ضيف بتاريخه وتفضيلاته، ونقاط «Opal Circle» تعيده للحجز المباشر.</p><ul><li>حملات واتساب وبريد</li><li>عروض أعياد الميلاد</li><li>تقييم بعد المغادرة</li></ul></div></div>
-      <div class="mod"><div class="ph" style="background-image:url(img/exterior.jpg)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.5"/></svg></div></div><div class="body"><h3>ربط القنوات</h3><p>مزامنة التوفّر والأسعار مع Booking وExpedia حتى لا يتكرّر بيع الغرفة.</p><ul><li>Channel Manager</li><li>ربط أجهزة الدفع</li><li>واجهة API مفتوحة</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/facade-day.webp)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></div></div><div class="body"><h3>الموقع ومحرّك الحجز</h3><p>موقع عربي وإنجليزي بهوية أوبال، والحجز يتمّ داخله.</p><ul><li>توفّر وأسعار لحظية</li><li>دفع إلكتروني آمن</li><li>عروض وأكواد خصم</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/stage.webp)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.7 7.1 18.2 8 12.7 4 8.8 9.5 8z"/></svg></div></div><div class="body"><h3>استوديو الأفراح</h3><p>القاعة والتاريخ والباقة ومجسّم الجلسات، وتقدير سعر فوري.</p><ul><li>تقويم توفّر لكل قاعة</li><li>مجسّم ثلاثي الأبعاد للطاولات</li><li>دفعة عربون إلكترونية</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/spa-hall.webp)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c-4-3-7-6-7-10a7 7 0 0114 0c0 4-3 7-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg></div></div><div class="body"><h3>حجوزات Aqua Spa</h3><p>الخدمة والمعالج والوقت، بأقسام منفصلة للرجال والسيدات.</p><ul><li>منع تعارض المواعيد</li><li>باقات سبا مع الإقامة</li><li>تذكير تلقائي</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/karam-in.webp)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3v8a3 3 0 006 0V3M9 3v18M18 3c-2 0-3 3-3 7h3v11"/></svg></div></div><div class="body"><h3>المطاعم وخدمة الغرف</h3><p>طاولات بيت الكرم وماتشو بيتشو، منيو QR، وطلبات الغرف.</p><ul><li>داخلي وتراس تحت النجوم</li><li>منيو رقمي بالصور</li><li>طلبات تُرسل للمطبخ</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/room.webp)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div></div><div class="body"><h3>بوابة الضيف</h3><p>تسجيل وصول مسبق، طلبات الغرفة، توصيل المطار، وفاتورة واضحة.</p><ul><li>Check-in إلكتروني</li><li>طلبات تنظيف وصيانة</li><li>محادثة مع الاستقبال</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/facade-night.webp)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div></div><div class="body"><h3>لوحة الإدارة والتوأم الرقمي</h3><p>الإشغال والإيرادات والفعاليات، ومجسّم الفندق بحالة كل غرفة.</p><ul><li>تقارير يومية تلقائية</li><li>صلاحيات حسب القسم</li><li>حالة الغرف لحظيًا</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/cafe-wide.webp)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 010 7"/></svg></div></div><div class="body"><h3>CRM وبرنامج الولاء</h3><p>ملف لكل ضيف بتاريخه وتفضيلاته، ونقاط «Opal Circle» تعيده للحجز المباشر.</p><ul><li>حملات واتساب وبريد</li><li>عروض أعياد الميلاد</li><li>تقييم بعد المغادرة</li></ul></div></div>
+      <div class="mod"><div class="ph" style="background-image:url(img/exterior.webp)"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.5"/></svg></div></div><div class="body"><h3>ربط القنوات</h3><p>مزامنة التوفّر والأسعار مع Booking وExpedia حتى لا يتكرّر بيع الغرفة.</p><ul><li>Channel Manager</li><li>ربط أجهزة الدفع</li><li>واجهة API مفتوحة</li></ul></div></div>
     </div>
   </div>
 </section>
@@ -568,7 +605,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 <section class="dark" id="preview">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">كيف سيبدو النظام</span>
+      <span class="eyebrow"><b class="idx">06</b>كيف سيبدو النظام</span>
       <h2>جرّبوه الآن، هذه شاشات تفاعلية</h2>
       <p class="mute">كل الشاشات أدناه بهوية أوبال وصوره الرسمية: الذهبي، الفحمي، الأخضر الزيتوني، وشعار الـ O. اضغطوا وجرّبوا.</p>
     </div>
@@ -585,7 +622,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
       <div class="browser">
         <div class="bbar"><i></i><i></i><i></i><div class="url">opalhoteljo.com/book</div></div>
         <div class="site-h"><div class="site-logo"><img src="img/opal-logo.png" alt="">OPAL HOTEL</div><nav><span>الغرف</span><span>الأفراح</span><span>المطعم</span><span>السبا</span><span>الكافيه</span></nav><button class="btn ghost" type="button">دخول</button></div>
-        <div class="site-hero ph" style="background-image:url(img/facade-night.jpg)"><h4>إقامة تليق بك على طريق المطار</h4></div>
+        <div class="site-hero ph" style="background-image:url(img/facade-night.webp)"><h4>إقامة تليق بك على طريق المطار</h4></div>
         <form class="bookbar" id="bookForm">
           <label for="bIn">الوصول<input id="bIn" type="date" value="2026-11-26"></label>
           <label for="bOut">المغادرة<input id="bOut" type="date" value="2026-11-28"></label>
@@ -644,7 +681,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
       <div class="browser">
         <div class="bbar"><i></i><i></i><i></i><div class="url">opalhoteljo.com/spa</div></div>
         <div class="site-h"><div class="site-logo" style="color:var(--olive)"><img src="img/opal-logo.png" alt="">AQUA SPA</div><span class="mute" style="font-size:13px">by Opal Hotel</span></div>
-        <div class="site-hero ph" style="background-image:url(img/spa-hall.jpg);height:150px"><h4>سبا بلا مكالمات</h4></div>
+        <div class="site-hero ph" style="background-image:url(img/spa-hall.webp);height:150px"><h4>سبا بلا مكالمات</h4></div>
         <div class="spa">
           <div class="seg" role="group" aria-label="القسم"><button type="button" aria-pressed="true" data-sec="m">قسم الرجال</button><button type="button" aria-pressed="false" data-sec="w">قسم السيدات</button></div>
           <div class="svc" id="svc"></div>
@@ -670,9 +707,9 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
         <div class="site-h"><div class="site-logo"><img src="img/opal-logo.png" alt="">BAIT AL-KARAM</div><span class="mute" style="font-size:13px">حجز طاولة</span></div>
         <div class="res">
           <div class="areas" id="areas">
-            <button type="button" class="area on" data-a="in"><div class="ph" style="background-image:url(img/karam-in.jpg)"></div><span><b>القاعة الداخلية</b><span class="mute">أجواء دافئة للعائلات</span></span></button>
-            <button type="button" class="area" data-a="out"><div class="ph" style="background-image:url(img/terrace.jpg)"></div><span><b>تحت النجوم</b><span class="mute">التراس الخارجي</span></span></button>
-            <button type="button" class="area" data-a="cafe"><div class="ph" style="background-image:url(img/cafe-wide.jpg)"></div><span><b>ماتشو بيتشو</b><span class="mute">الكافيه والتراس المشمس</span></span></button>
+            <button type="button" class="area on" data-a="in"><div class="ph" style="background-image:url(img/karam-in.webp)"></div><span><b>القاعة الداخلية</b><span class="mute">أجواء دافئة للعائلات</span></span></button>
+            <button type="button" class="area" data-a="out"><div class="ph" style="background-image:url(img/terrace.webp)"></div><span><b>تحت النجوم</b><span class="mute">التراس الخارجي</span></span></button>
+            <button type="button" class="area" data-a="cafe"><div class="ph" style="background-image:url(img/cafe-wide.webp)"></div><span><b>ماتشو بيتشو</b><span class="mute">الكافيه والتراس المشمس</span></span></button>
           </div>
           <div class="tables" id="tables" aria-label="مخطط الطاولات"></div>
           <div class="legend"><span><i style="background:#fff;border:1px solid #ddd"></i>متاحة</span><span><i style="background:#e6dfd2"></i>محجوزة</span><span><i style="background:var(--gold)"></i>طاولتك</span></div>
@@ -682,7 +719,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
       <div class="panel-note">
         <div class="phone"><div class="scr">
           <div class="notch"><i></i></div>
-          <div class="site-hero ph" style="background-image:url(img/karam-night.jpg);height:120px"><h4 style="font-size:22px">منيو بيت الكرم</h4></div>
+          <div class="site-hero ph" style="background-image:url(img/karam-night.webp);height:120px"><h4 style="font-size:22px">منيو بيت الكرم</h4></div>
           <div id="menu"></div>
           <div class="cart"><span>غرفة 312 · خدمة الغرف</span><span class="tnum" id="cart">0.00 د.أ</span></div>
         </div></div>
@@ -745,12 +782,12 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 <section id="film">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">فيلم أوبال</span>
+      <span class="eyebrow"><b class="idx">07</b>فيلم أوبال</span>
       <h2>محتوى تسويقي جاهز من داخل النظام</h2>
       <p class="mute">أعددنا هذا الفيلم وهذا الريل من صور أوبال الرسمية كمثال على ما ينتجه قسم التسويق في OPAL ONE: فيديو للموقع، وريلز للسوشال، كلها بهوية الفندق وتقود مباشرة لصفحة الحجز.</p>
     </div>
     <div class="film-grid">
-      <div class="film"><video src="media/opal-film.mp4" poster="media/film-poster.jpg" controls playsinline preload="metadata"></video></div>
+      <div class="film"><video src="media/opal-film.mp4" poster="media/film-poster.jpg" controls playsinline preload="none"></video></div>
       <div class="reel">
         <div class="phone"><div class="scr"><video src="media/halls-reel.mp4" poster="media/reel-poster.jpg" autoplay muted loop playsinline></video></div></div>
         <p>ريل «القاعات الأربع» لإنستغرام</p>
@@ -763,16 +800,16 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 <section id="journey" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">رحلة الضيف</span>
+      <span class="eyebrow"><b class="idx">08</b>رحلة الضيف</span>
       <h2>من أول إعلان حتى التقييم بعد المغادرة</h2>
     </div>
     <div class="journey">
-      <div class="step"><div class="ph" style="background-image:url(img/cafe-mural2.jpg)"><b>1</b></div><h3>يكتشف</h3><p>منشور على إنستغرام يقوده مباشرة لصفحة العرض في الموقع</p></div>
-      <div class="step"><div class="ph" style="background-image:url(img/room.jpg)"><b>2</b></div><h3>يحجز</h3><p>يختار الغرفة ويضيف جلسة سبا وعشاء ويدفع في دقيقتين</p></div>
-      <div class="step"><div class="ph" style="background-image:url(img/exterior.jpg)"><b>3</b></div><h3>يصل</h3><p>تسجيل وصول مسبق، والاستقبال يعرف اسمه وتفضيلاته</p></div>
-      <div class="step"><div class="ph" style="background-image:url(img/kibbeh.jpg)"><b>4</b></div><h3>يتذوّق</h3><p>يطلب من المنيو الرقمي في بيت الكرم أو من غرفته</p></div>
-      <div class="step"><div class="ph" style="background-image:url(img/jacuzzi.jpg)"><b>5</b></div><h3>يسترخي</h3><p>يحجز الحمّام والجاكوزي من هاتفه ويُضاف للفاتورة</p></div>
-      <div class="step"><div class="ph" style="background-image:url(img/facade-day.jpg)"><b>6</b></div><h3>يعود</h3><p>تقييم بعد المغادرة ونقاط Opal Circle لحجزه القادم</p></div>
+      <div class="step"><div class="ph" style="background-image:url(img/cafe-mural2.webp)"><b>1</b></div><h3>يكتشف</h3><p>منشور على إنستغرام يقوده مباشرة لصفحة العرض في الموقع</p></div>
+      <div class="step"><div class="ph" style="background-image:url(img/room.webp)"><b>2</b></div><h3>يحجز</h3><p>يختار الغرفة ويضيف جلسة سبا وعشاء ويدفع في دقيقتين</p></div>
+      <div class="step"><div class="ph" style="background-image:url(img/exterior.webp)"><b>3</b></div><h3>يصل</h3><p>تسجيل وصول مسبق، والاستقبال يعرف اسمه وتفضيلاته</p></div>
+      <div class="step"><div class="ph" style="background-image:url(img/kibbeh.webp)"><b>4</b></div><h3>يتذوّق</h3><p>يطلب من المنيو الرقمي في بيت الكرم أو من غرفته</p></div>
+      <div class="step"><div class="ph" style="background-image:url(img/jacuzzi.webp)"><b>5</b></div><h3>يسترخي</h3><p>يحجز الحمّام والجاكوزي من هاتفه ويُضاف للفاتورة</p></div>
+      <div class="step"><div class="ph" style="background-image:url(img/facade-day.webp)"><b>6</b></div><h3>يعود</h3><p>تقييم بعد المغادرة ونقاط Opal Circle لحجزه القادم</p></div>
     </div>
   </div>
 </section>
@@ -781,7 +818,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 <section class="dark" id="plan">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">خطة التنفيذ</span>
+      <span class="eyebrow"><b class="idx">09</b>خطة التنفيذ</span>
       <h2>أربع مراحل، وكل مرحلة تشتغل فور تسليمها</h2>
       <p class="mute">نبدأ بما يجلب دخلًا مباشرًا أولًا، ثم نبني فوقه. كل مرحلة تُسلَّم وتُدرَّب عليها الفرق قبل الانتقال للتالية.</p>
     </div>
@@ -798,7 +835,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 <section id="impact">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">الأثر المستهدف</span>
+      <span class="eyebrow"><b class="idx">10</b>الأثر المستهدف</span>
       <h2>ماذا يتغيّر في السنة الأولى</h2>
       <p class="mute">أهداف نضعها معكم ونقيسها من لوحة الإدارة نفسها، شهرًا بشهر.</p>
     </div>
@@ -818,9 +855,9 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 
 <!-- ================= CTA ================= -->
 <section class="cta" id="next">
-  <div class="bg ph" style="background-image:url(img/facade-night.jpg)"></div>
+  <div class="bg ph" style="background-image:url(img/facade-night.webp)"></div>
   <div class="wrap">
-    <div class="pair"><img src="img/elevate-logo.png" alt="شعار ELEVATE"><span class="x">×</span><img src="img/opal-logo.png" alt="شعار فندق أوبال"></div>
+    <div class="pair"><img src="img/elevate-gold.png" alt="شعار ELEVATE"><span class="x">×</span><img src="img/opal-logo.png" alt="شعار فندق أوبال"></div>
     <span class="eyebrow">الخطوة التالية</span>
     <h2>نعرضها عليكم حيّة في الفندق</h2>
     <p style="max-width:560px;color:#CFC8BB">جلسة 45 دقيقة مع الإدارة نمرّ فيها على كل شاشة، ونحدّد معًا أولويات المرحلة الأولى وجدولها.</p>
@@ -829,7 +866,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
   </div>
 </section>
 <footer class="foot"><div class="wrap">
-  <div class="pair"><img src="img/elevate-logo.png" alt=""><span class="nm">ELEVATE</span></div>
+  <div class="pair"><img src="img/elevate-gold.png" alt=""><span class="nm">ELEVATE</span></div>
   <span>عرض <span class="brand gold">OPAL ONE</span> مقدَّم لفندق أوبال عمّان · تشرين الثاني 2026</span>
   <span>صور الفندق من موقع أوبال الرسمي</span>
 </div></footer>
@@ -844,7 +881,7 @@ const DPR=Math.min(devicePixelRatio||1,MOBILE?1.25:2);
 /* react only to width changes: mobile URL bars change height while scrolling */
 function onWidth(fn){let w=innerWidth;addEventListener('resize',()=>{if(innerWidth!==w){w=innerWidth;fn();}});}
 /* hero video: lighter file on phones, pause when off screen */
-(function(){const v=document.getElementById('heroVid');v.src=MOBILE?'media/opal-film-sm.mp4':'media/opal-film.mp4';if(!reduce)v.play().catch(()=>{});
+(function(){const v=document.getElementById('heroVid');if(!reduce)v.play().catch(()=>{});
   document.querySelectorAll('video').forEach(vd=>{new IntersectionObserver(es=>{const e=es[0];if(e.isIntersecting){if(vd.autoplay&&!reduce)vd.play().catch(()=>{});}else vd.pause();},{threshold:.1}).observe(vd);});})();
 const GOLD=0xBB8B41;
 if(reduce){const v=document.getElementById('heroVid');v.removeAttribute('autoplay');}
@@ -855,7 +892,7 @@ if(reduce){const v=document.getElementById('heroVid');v.removeAttribute('autopla
   const ring=document.getElementById('ring'),wrap=document.getElementById('ringWrap');
   const n=pics.length,step=360/n;
   let RAD=0;const calcR=()=>{RAD=Math.round((ring.offsetWidth/2)/Math.tan(Math.PI/n))+(MOBILE?20:40);};const R=()=>RAD;
-  pics.forEach((p,i)=>{const f=document.createElement('figure');f.style.backgroundImage=`url(img/${p[0]}.jpg)`;f.innerHTML=`<figcaption>${p[1]}</figcaption>`;ring.appendChild(f);});
+  pics.forEach((p,i)=>{const f=document.createElement('figure');f.style.backgroundImage=`url(img/${p[0]}.webp)`;f.innerHTML=`<figcaption>${p[1]}</figcaption>`;ring.appendChild(f);});
   const figs=[...ring.children];
   function place(){calcR();const r=R();figs.forEach((f,i)=>f.style.transform=`rotateY(${i*step}deg) translateZ(${r}px)`);}
   place();onWidth(place);
@@ -876,7 +913,7 @@ if(!reduce&&FINE)document.querySelectorAll('.tilt').forEach(el=>{
 });
 
 /* ---------------- 3D HOTEL (digital twin) ---------------- */
-const STATUS=['#4FB06B','#4FB06B','#4FB06B','#E9A23B','#6B8FD6','#4FB06B','#6B8FD6','#D9534F','#4FB06B','#E9A23B'];
+const STATUS=['#8DB36E','#8DB36E','#8DB36E','#D9A441','#8C9BB5','#8DB36E','#8C9BB5','#C2553F','#8DB36E','#D9A441'];
 function facadeTex(cols,rows,opt){
   const W=512,H=512,c=document.createElement('canvas');c.width=W;c.height=H;
   const e=document.createElement('canvas');e.width=W;e.height=H;
@@ -992,7 +1029,7 @@ function initScene(){
   canvas.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;canvas.setPointerCapture(e.pointerId);vel=0;});
   canvas.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lx;lx=e.clientX;vel=-dx*.006;ang+=vel;idle=0;});
   addEventListener('pointerup',()=>drag=false);
-  function resize(){const r=canvas.parentElement.getBoundingClientRect();renderer.setSize(r.width,r.height,false);cam.aspect=r.width/r.height;dist=r.width<560?135:90;cam.updateProjectionMatrix();}
+  function resize(){const r=canvas.parentElement.getBoundingClientRect();renderer.setSize(r.width,r.height,false);cam.aspect=r.width/r.height;dist=r.width<560?135:90;scene.fog.near=dist-25;scene.fog.far=dist+70;cam.updateProjectionMatrix();}
   onWidth(resize);resize();
   const v=new THREE.Vector3(),camDir=new THREE.Vector3(),tgt=new THREE.Vector3(0,6,0);
   let t0=performance.now(),visible=true;new IntersectionObserver(es=>visible=es[0].isIntersecting).observe(canvas);
@@ -1027,7 +1064,7 @@ function initHall(){
   const wallM=new THREE.MeshStandardMaterial({color:0xEFE6D6,roughness:.7,side:THREE.BackSide});
   const walls=new THREE.Mesh(new THREE.BoxGeometry(Wd,8,L),wallM);walls.position.y=4;g.add(walls);
   // runway like Imperial
-  const run=new THREE.Mesh(new THREE.BoxGeometry(3,.12,L*.62),new THREE.MeshStandardMaterial({color:0x2a4fb8,emissive:0x2b5be0,emissiveIntensity:.9,roughness:.1}));run.position.set(0,.06,-1);g.add(run);
+  const run=new THREE.Mesh(new THREE.BoxGeometry(3,.12,L*.62),new THREE.MeshStandardMaterial({color:0x2d3f6e,emissive:0x3b5aa8,emissiveIntensity:.55,roughness:.1}));run.position.set(0,.06,-1);g.add(run);
   [-1.7,1.7].forEach(x=>{for(let i=0;i<9;i++){const p=new THREE.Mesh(new THREE.CylinderGeometry(.12,.12,1.2,10),goldM);p.position.set(x,.6,-12+i*2.8);g.add(p);}});
   // stage + kosha
   const stage=new THREE.Mesh(new THREE.BoxGeometry(12,1,5),new THREE.MeshStandardMaterial({color:0xF3ECE0,roughness:.4}));stage.position.set(0,.5,-L/2+3);g.add(stage);
@@ -1073,12 +1110,12 @@ tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>{x.setAttribute(
 const ROOMS=[{n:'Deluxe Room',d:'سرير كينغ · شرفة على الحديقة',p:75,pos:'30% 50%'},{n:'Twin Room',d:'سريران · إطلالة حديقة',p:80,pos:'75% 60%'},{n:'Family Suite',d:'75 م² · غرفتا نوم · 4 ضيوف',p:135,pos:'55% 40%'}];
 const roomsEl=document.getElementById('rooms');let selRoom=0;
 const nights=()=>{const a=new Date(document.getElementById('bIn').value),b=new Date(document.getElementById('bOut').value);return Math.max(1,Math.round((b-a)/864e5)||1);};
-function renderRooms(){roomsEl.innerHTML=ROOMS.map((r,i)=>`<div class="room${i===selRoom?' sel':''}"><div class="ph" style="background-image:url(img/room.jpg);background-position:${r.pos};background-size:180%"></div><div class="rb"><b class="latin" style="font-family:var(--f-brand)">${r.n}</b><span class="mute">${r.d}</span><div class="pr"><strong class="tnum">${r.p} د.أ</strong><button type="button" class="btn ${i===selRoom?'':'ghost'}" data-i="${i}" style="padding:5px 12px;font-size:12px">${i===selRoom?'مختارة':'اختر'}</button></div></div></div>`).join('');
+function renderRooms(){roomsEl.innerHTML=ROOMS.map((r,i)=>`<div class="room${i===selRoom?' sel':''}"><div class="ph" style="background-image:url(img/room.webp);background-position:${r.pos};background-size:180%"></div><div class="rb"><b class="latin" style="font-family:var(--f-brand)">${r.n}</b><span class="mute">${r.d}</span><div class="pr"><strong class="tnum">${r.p} د.أ</strong><button type="button" class="btn ${i===selRoom?'':'ghost'}" data-i="${i}" style="padding:5px 12px;font-size:12px">${i===selRoom?'مختارة':'اختر'}</button></div></div></div>`).join('');
   roomsEl.querySelectorAll('button').forEach(b=>b.onclick=()=>{selRoom=+b.dataset.i;renderRooms();renderConfirm();});}
 function renderConfirm(){const r=ROOMS[selRoom],n=nights(),tot=r.p*n;
   const qr=Array.from({length:49},(_,i)=>`<i style="aspect-ratio:1;display:block;background:${(i*7919%5<2||[0,1,7,8,5,6,12,13,35,36,42,43].includes(i))?'#1D1E20':'transparent'}"></i>`).join('');
   document.getElementById('confirm').innerHTML=`<div class="notch"><i></i></div>
-  <div class="ph" style="height:110px;background-image:url(img/facade-night.jpg)"></div>
+  <div class="ph" style="height:110px;background-image:url(img/facade-night.webp)"></div>
   <div style="padding:14px 18px;display:grid;gap:10px">
    <div class="site-logo" style="font-size:14px"><img src="img/opal-logo.png" alt="" style="height:20px">OPAL HOTEL</div>
    <div style="font:700 21px var(--f-display)">تمّ تأكيد حجزك ✓</div>
@@ -1100,7 +1137,7 @@ renderRooms();renderConfirm();
 const HALLS=[['IMPERIAL','door-imperial',1.25,1],['MASSAYA','door-massaya',1,.85],['PALACE','door-palace',1.1,.92],['OPERA & PETRA','door-opera',.9,.8]];
 let hall=0,month=new Date(2026,11,1),picked=null;
 const hp=document.getElementById('hallsPick');
-hp.innerHTML=HALLS.map((h,i)=>`<button type="button" class="hall" aria-pressed="${i===0}" data-i="${i}" style="background-image:url(img/${h[1]}.jpg)"><span>${h[0]}</span></button>`).join('');
+hp.innerHTML=HALLS.map((h,i)=>`<button type="button" class="hall" aria-pressed="${i===0}" data-i="${i}" style="background-image:url(img/${h[1]}.webp)"><span>${h[0]}</span></button>`).join('');
 hp.querySelectorAll('.hall').forEach(b=>b.onclick=()=>{hall=+b.dataset.i;picked=null;hp.querySelectorAll('.hall').forEach(x=>x.setAttribute('aria-pressed',x===b));renderCal();est();});
 const AR_M=['كانون الثاني','شباط','آذار','نيسان','أيار','حزيران','تموز','آب','أيلول','تشرين الأول','تشرين الثاني','كانون الأول'];
 function status(d){const s=(d.getDate()*31+d.getMonth()*17+hall*13)%11;const dow=d.getDay();if((dow===4||dow===5)&&s<6)return 'busy';if(s===3||s===7)return 'hold';if(s===9)return 'busy';return '';}
@@ -1129,7 +1166,7 @@ renderCal();est();
 const SVC={m:[['الحمّام التركي','60 د',35,'hammam'],['الحمّام المغربي','75 د',40,'hammam2'],['مساج الجسم الكامل','60 د',45,'spa-room'],['الجاكوزي والساونا','45 د',20,'jacuzzi']],
            w:[['الحمّام المغربي','75 د',40,'hammam2'],['مساج وعناية','60 د',45,'spa-towels'],['صالون: منيكير وبديكير','60 د',30,'spa-lounge'],['قسم السيدات الخاص','90 د',55,'spa-hall']]};
 let sec='m',svc=0,slot=null;
-function renderSpa(){const svcEl=document.getElementById('svc');svcEl.innerHTML=SVC[sec].map((s,i)=>`<button type="button" aria-pressed="${i===svc}" data-i="${i}"><div class="ph" style="background-image:url(img/${s[3]}.jpg)"></div><span><b>${s[0]}</b><span class="mute">${s[1]} · ${s[2]} د.أ</span></span></button>`).join('');
+function renderSpa(){const svcEl=document.getElementById('svc');svcEl.innerHTML=SVC[sec].map((s,i)=>`<button type="button" aria-pressed="${i===svc}" data-i="${i}"><div class="ph" style="background-image:url(img/${s[3]}.webp)"></div><span><b>${s[0]}</b><span class="mute">${s[1]} · ${s[2]} د.أ</span></span></button>`).join('');
   svcEl.querySelectorAll('button').forEach(b=>b.onclick=()=>{svc=+b.dataset.i;renderSpa();});
   const times=['10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00'];
   const sl=document.getElementById('slots');sl.innerHTML=times.map((t,i)=>{const off=((i+svc*3+(sec==='w'?2:0))%5)===1;return `<button type="button" class="slot" ${off?'disabled':''} aria-pressed="${slot===t}" data-t="${t}">${t}</button>`}).join('');
@@ -1148,7 +1185,7 @@ function renderTables(){const seed={in:3,out:5,cafe:7}[area];const el=document.g
 document.querySelectorAll('.area').forEach(b=>b.onclick=()=>{area=b.dataset.a;table=null;document.querySelectorAll('.area').forEach(x=>x.classList.toggle('on',x===b));renderTables();});
 renderTables();
 const MENU=[['مشاوي مشكّلة','كباب، شيش طاووق، لحم',12.5,'food-spread'],['كبّة مقلية','مع لبن ورمان',6,'kibbeh'],['طبق الشيف','من مطبخ بيت الكرم',7.5,'dish'],['حلويات لبنانية','تشكيلة بالفستق',5.5,'sweets'],['ساندويش ماتشو','من كافيه ماتشو بيتشو',6.5,'burger']];
-let cart=0;document.getElementById('menu').innerHTML=MENU.map(m=>`<div class="mi"><div class="ph" style="background-image:url(img/${m[3]}.jpg)"></div><b>${m[0]}</b><button type="button" data-p="${m[2]}" aria-label="أضف ${m[0]}">+</button><span class="mute">${m[1]} · <span class="p tnum">${m[2].toFixed(2)}</span></span></div>`).join('');
+let cart=0;document.getElementById('menu').innerHTML=MENU.map(m=>`<div class="mi"><div class="ph" style="background-image:url(img/${m[3]}.webp)"></div><b>${m[0]}</b><button type="button" data-p="${m[2]}" aria-label="أضف ${m[0]}">+</button><span class="mute">${m[1]} · <span class="p tnum">${m[2].toFixed(2)}</span></span></div>`).join('');
 document.querySelectorAll('#menu button').forEach(b=>b.onclick=()=>{cart+=+b.dataset.p;document.getElementById('cart').textContent=cart.toFixed(2)+' د.أ';});
 
 /* ---------------- occupancy chart ---------------- */
