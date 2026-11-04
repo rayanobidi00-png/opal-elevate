@@ -435,6 +435,17 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
   .fact .n{font-size:38px}
   .dark::after,.twin::after{background-size:120px auto;background-position:90% 4%}
 }
+
+/* hero slideshow: full-resolution photos, darkened so the copy reads */
+.hero-slides{position:absolute;inset:0;overflow:hidden;filter:brightness(.62) saturate(.92)}
+.hero-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.02);transition:opacity 1.6s ease}
+.hero-slides img.on{opacity:1;animation:kb 7s ease-out forwards}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.11)}}
+.hero .shade{background:linear-gradient(270deg,rgba(12,12,13,.95) 0%,rgba(12,12,13,.82) 42%,rgba(12,12,13,.45) 100%),linear-gradient(0deg,rgba(12,12,13,.96),transparent 50%)!important}
+@media (max-width:760px){
+  .hero-slides{filter:brightness(.5) saturate(.9)}
+  .hero .shade{background:linear-gradient(180deg,rgba(12,12,13,.6) 0%,rgba(12,12,13,.5) 30%,rgba(12,12,13,.88) 62%,rgba(12,12,13,.98) 100%)!important}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -442,11 +453,17 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 
 <!-- ================= COVER ================= -->
 <header class="hero" id="top">
-  <video id="heroVid" autoplay muted loop playsinline preload="auto"></video>
-  <script>(function(){var m=matchMedia("(max-width:760px)").matches,v=document.getElementById("heroVid");v.poster=m?"media/hero-poster.jpg":"media/film-poster.jpg";v.src=m?"media/hero-portrait.mp4":"media/opal-film.mp4";})();</script>
+  <div class="hero-slides" id="heroSlides" aria-hidden="true">
+    <img class="on" src="img/facade-night.webp" alt="" fetchpriority="high">
+    <img src="img/imperial-hall.webp" alt="" loading="lazy">
+    <img src="img/karam-night.webp" alt="" loading="lazy">
+    <img src="img/hammam.webp" alt="" loading="lazy">
+    <img src="img/cafe-mural.webp" alt="" loading="lazy">
+    <img src="img/facade-day.webp" alt="" loading="lazy">
+  </div>
   <div class="shade"></div>
   <div class="topbar"><div class="wrap">
-    <div class="pair"><img src="img/elevate-gold.png" alt="شعار ELEVATE"><span class="nm">ELEVATE</span><span class="x">×</span><img src="img/opal-logo.png" alt="شعار فندق أوبال"><span class="op">OPAL HOTEL</span></div>
+    <div class="pair"><img src="img/elevate-logo.png" alt="شعار ELEVATE"><span class="nm">ELEVATE</span><span class="x">×</span><img src="img/opal-logo.png" alt="شعار فندق أوبال"><span class="op">OPAL HOTEL</span></div>
     <div class="tag">عرض فني وتجاري · تشرين الثاني 2026</div>
   </div></div>
   <div class="wrap hero-in">
@@ -462,7 +479,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
       </div>
     </div>
     <aside class="cover-card">
-      <div class="row2"><img src="img/elevate-gold.png" alt=""><div><small>مقدَّم من</small><br><b class="latin">ELEVATE</b></div></div>
+      <div class="row2"><img src="img/elevate-logo.png" alt=""><div><small>مقدَّم من</small><br><b class="latin">ELEVATE</b></div></div>
       <p>شريككم التقني لبناء منظومة أوبال الرقمية، من التصميم حتى التشغيل والدعم.</p>
       <a class="play" href="#film"><i></i>شاهد فيلم أوبال</a>
     </aside>
@@ -857,7 +874,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 <section class="cta" id="next">
   <div class="bg ph" style="background-image:url(img/facade-night.webp)"></div>
   <div class="wrap">
-    <div class="pair"><img src="img/elevate-gold.png" alt="شعار ELEVATE"><span class="x">×</span><img src="img/opal-logo.png" alt="شعار فندق أوبال"></div>
+    <div class="pair"><img src="img/elevate-logo.png" alt="شعار ELEVATE"><span class="x">×</span><img src="img/opal-logo.png" alt="شعار فندق أوبال"></div>
     <span class="eyebrow">الخطوة التالية</span>
     <h2>نعرضها عليكم حيّة في الفندق</h2>
     <p style="max-width:560px;color:#CFC8BB">جلسة 45 دقيقة مع الإدارة نمرّ فيها على كل شاشة، ونحدّد معًا أولويات المرحلة الأولى وجدولها.</p>
@@ -866,7 +883,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
   </div>
 </section>
 <footer class="foot"><div class="wrap">
-  <div class="pair"><img src="img/elevate-gold.png" alt=""><span class="nm">ELEVATE</span></div>
+  <div class="pair"><img src="img/elevate-logo.png" alt=""><span class="nm">ELEVATE</span></div>
   <span>عرض <span class="brand gold">OPAL ONE</span> مقدَّم لفندق أوبال عمّان · تشرين الثاني 2026</span>
   <span>صور الفندق من موقع أوبال الرسمي</span>
 </div></footer>
@@ -881,10 +898,11 @@ const DPR=Math.min(devicePixelRatio||1,MOBILE?1.25:2);
 /* react only to width changes: mobile URL bars change height while scrolling */
 function onWidth(fn){let w=innerWidth;addEventListener('resize',()=>{if(innerWidth!==w){w=innerWidth;fn();}});}
 /* hero video: lighter file on phones, pause when off screen */
-(function(){const v=document.getElementById('heroVid');if(!reduce)v.play().catch(()=>{});
+(function(){const sl=[...document.querySelectorAll('#heroSlides img')];let i=0;sl.forEach(im=>im.loading='eager');
+  if(!reduce)setInterval(()=>{if(document.hidden)return;sl[i].classList.remove('on');i=(i+1)%sl.length;sl[i].classList.add('on');},5200);
   document.querySelectorAll('video').forEach(vd=>{new IntersectionObserver(es=>{const e=es[0];if(e.isIntersecting){if(vd.autoplay&&!reduce)vd.play().catch(()=>{});}else vd.pause();},{threshold:.1}).observe(vd);});})();
 const GOLD=0xBB8B41;
-if(reduce){const v=document.getElementById('heroVid');v.removeAttribute('autoplay');}
+
 
 /* ---------------- 3D photo ring ---------------- */
 (function(){
